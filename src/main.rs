@@ -1,7 +1,7 @@
 mod controllers;
 
 use actix_files::Files;
-use actix_web::{App, HttpServer, web};
+use actix_web::{App, HttpServer, web, HttpResponse};
 use tera::Tera;
 
 #[actix_web::main]
@@ -13,6 +13,10 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(move || {
         App::new()
             .app_data(web::Data::new(tera.clone()))
+            .service(
+                web::resource("/health")
+                    .route(web::get().to(|| async { HttpResponse::Ok().finish() }))
+            )
             // Register controllers
             .configure(controllers::init)
             // Statics
