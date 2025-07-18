@@ -1,0 +1,133 @@
+<section
+  class="section section-contact bg-theme-alt tc-light ov-h"
+  id="contact"
+>
+  <div class="container">
+    <!-- Block @s -->
+    <div class="nk-block block-contact">
+      <div class="row justify-content-center gutter-vr-30px">
+        <div class="col-lg-3">
+          <div
+            class="section-head section-head-sm section-head-s9 tc-light text-center text-lg-start"
+          >
+            <h6
+              class="title title-xs title-s1 tc-primary animated"
+              data-animate="fadeInUp"
+              data-delay=".1"
+            >
+              Contact
+            </h6>
+            <h2 class="title animated" data-animate="fadeInUp" data-delay=".2">
+              Get In Touch
+            </h2>
+            <p class="animated" data-animate="fadeInUp" data-delay=".3">
+              Any question? Reach out to us and we’ll get back to you shortly.
+            </p>
+          </div>
+          <div class="d-flex flex-column justify-content-between h-100">
+            <ul class="contact-list contact-list-s2">
+              <li class="animated" data-animate="fadeInUp" data-delay=".4">
+                <em class="contact-icon fas fa-phone"></em>
+                <div class="contact-text">
+                  <span>+44 0123 4567</span>
+                </div>
+              </li>
+              <li class="animated" data-animate="fadeInUp" data-delay=".5">
+                <em class="contact-icon fas fa-envelope"></em>
+                <div class="contact-text">
+                  <span>info@company.com</span>
+                </div>
+              </li>
+              <li class="animated" data-animate="fadeInUp" data-delay=".6">
+                <em class="contact-icon fas fa-paper-plane"></em>
+                <div class="contact-text">
+                  <span>Join us on Telegram</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- .col -->
+        <div class="col-lg-4 offset-lg-1">
+          <div class="gap-6x d-none d-lg-block"></div>
+          <div class="gap-4x d-none d-lg-block"></div>
+          <form
+            id="contact-form-01"
+            class="contact-form nk-form-submit"
+            action="form/contact.php"
+            method="post"
+          >
+            <div
+              class="field-item field-item-s2 animated"
+              data-animate="fadeInUp"
+              data-delay=".7"
+            >
+              <input
+                name="contact-name"
+                type="text"
+                class="input-bordered required"
+                placeholder="Your Name"
+              />
+            </div>
+            <div
+              class="field-item field-item-s2 animated"
+              data-animate="fadeInUp"
+              data-delay=".8"
+            >
+              <input
+                name="contact-email"
+                type="email"
+                class="input-bordered required email"
+                placeholder="Your Email"
+              />
+            </div>
+            <div
+              class="field-item field-item-s2 animated"
+              data-animate="fadeInUp"
+              data-delay=".9"
+            >
+              <textarea
+                name="contact-message"
+                class="input-bordered input-textarea required"
+                placeholder="Your Message"
+              ></textarea>
+            </div>
+            <input
+              type="text"
+              class="d-none"
+              name="form-anti-honeypot"
+              value=""
+            />
+            <div class="row">
+              <div
+                class="col-sm-12 animated"
+                data-animate="fadeInUp"
+                data-delay="1"
+              >
+                <button type="submit" class="btn btn-s2 btn-md btn-grad">
+                  Submit
+                </button>
+              </div>
+              <div class="col-sm-12">
+                <div class="form-results"></div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- .col -->
+        <div class="col-lg-4 align-self-center">
+          <div
+            class="nk-block-img animated"
+            data-animate="fadeInUp"
+            data-delay="1.1"
+          >
+            <img src="/static/images/gfx/gfx-q.png" alt="lungwort" />
+          </div>
+        </div>
+        <!-- .col -->
+      </div>
+      <!-- .row -->
+    </div>
+    <!-- .block @e -->
+  </div>
+</section>

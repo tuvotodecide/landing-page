@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zxx" class="js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Softnio" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <!-- Fav Icon  -->
+    <link rel="shortcut icon" href="/static/images/favicon.png" />
+    <!-- Site Title  -->
+    <title>Wira | {% block title %}Mi Sitio{% endblock %}</title>
+    <!-- Bundle and Base CSS -->
+    <link rel="stylesheet" href="/static/css/vendor.bundle.css?ver=210" />
+    <link rel="stylesheet" href="/static/css/style-lungwort.css?ver=210" />
+    <!-- Extra CSS -->
+    <link rel="stylesheet" href="/static/css/theme.css?ver=210" />
+
+    <!-- Additional CSS -->
+    {% if extra_css %} {% for sheet in extra_css %}
+    <link rel="stylesheet" href="{{ sheet }}" />
+    {% endfor %} {% endif %} {% block head_extra %}{% endblock %}
+  </head>
+  <body class="nk-body body-wider theme-dark mode-onepage">
+    <div class="nk-wrap">
+      <!-- optional header -->
+      {% if show_header %} {% include "components/common/header.html" %} {%
+      endif %}
+
+      <!-- main content -->
+      {% block content %}{% endblock %}
+
+      <!-- footer -->
+      {% include "components/common/footer.html" %}
+
+      <!-- JS common -->
+      <!-- Preloader -->
+      <div class="preloader"><span class="spinner spinner-round"></span></div>
+      <!-- JavaScript -->
+      <script src="/static/js/jquery.bundle.js?ver=210"></script>
+      <script src="/static/js/scripts.js?ver=210"></script>
+      <script src="/static/js/charts.js?ver=210"></script>
+      <script src="/static/js/toastr.examples.js?ver=210"></script>
+
+      <!-- JS additional -->
+      {% if extra_js %} {% for script in extra_js %}
+      <script src="{{ script }}"></script>
+      {% endfor %} {% endif %} {% block js_extra %}{% endblock %}
+    </div>
+  </body>
+</html>

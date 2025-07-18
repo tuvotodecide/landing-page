@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% block title %}{{ page_title }} {% endblock %} {%
+block content %}
+<main class="nk-pages">
+
+  {#{% include "components/body/others/ratings.html" %}#} 
+  <section class="section bg-theme tc-light" id="features">
+    <div class="container">
+
+    {% include "components/body/complete/feature1.html" %} 
+
+    {% include "components/body/complete/feature2.html" %} 
+
+    {% include "components/body/complete/feature3.html" %} 
+
+    {% include "components/body/complete/feature4.html" %} 
+    </div>
+  </section>
+
+   {% include "components/body/others/cards_with_redirect.html" %} 
+
+  {# {% include "components/body/others/app.html" %} #}
+
+  {# {% include "components/body/others/token_sale.html" %} #}
+
+  {% include "components/body/others/documents.html" %} 
+
+  {% include "components/body/others/roadmap.html" %} 
+
+  {% include "components/body/others/team.html" %} 
+
+  {#{% include "components/body/others/partners.html" %} #}
+
+  {#{% include "components/body/others/faqs.html" %} #}
+
+  {#{% include "components/body/others/contact.html" %} #}
+</main>
+{% endblock %}
