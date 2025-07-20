@@ -1,5 +1,8 @@
-{% extends "base.html" %} {% block title %}{{ page_title }} {% endblock %} {%
-block content %}
+{% extends "base.html" %}
+
+{% block title %}{{ t.page_title }}{% endblock %}
+
+{% block content %}
 <main class="nk-pages bg-transparent">
   {% include "components/body/others/whatIs.html" %} 
   {% include "components/body/others/features.html" %} 

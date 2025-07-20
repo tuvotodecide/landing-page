@@ -1,0 +1,12 @@
+{
+  "page_title": "Inicio",
+  "whatIs": {
+    "section_title": "¿Cómo funciona?",
+    "intro": "Introducción a la Plataforma",
+    "paragraphs": [
+      "En un contexto donde la confianza en los procesos electorales es fundamental, Tu Voto Decide emerge como una solución blockchain-based para el monitoreo ciudadano.",
+      "Esta aplicación permite a los usuarios crear una identidad digital soberana integrada con el ecosistema Wira Wallet. Los individuos se registran validando su información mediante inteligencia artificial, que compara una selfie con datos oficiales. Una vez registrada la identidad, los usuarios pueden capturar fotos de actas electorales, firmarlas electrónicamente y convertirlas en NFTs para asegurar su autenticidad.",
+      "Otros participantes descargan estas actas para validarlas, y los resultados se consolidan en la blockchain, ofreciendo transparencia inalterable. El piloto se lanzará en las elecciones generales de Bolivia 2025, con énfasis en la segunda vuelta, y se expandirá a niveles municipales, nacionales e internacionales para instituciones que requieran voto electrónico seguro."
+    ]
+  }
+}

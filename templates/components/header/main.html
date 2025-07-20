@@ -22,12 +22,15 @@
           />
         </a>
         <div class="language-switcher language-switcher-s3 toggle-wrap">
-          <a class="toggle-tigger" href="#">Es</a>
+          <a class="toggle-tigger" href="#">{{ lang|upper }}</a>
           <ul
             class="toggle-class toggle-drop text-center drop-list drop-list-xs"
           >
-            <li><a href="#">Esp</a></li>
-            <li><a href="#">Eng</a></li>
+            {% for code in alt_links | map(attribute=0) %} {% if code != lang %}
+            <li>
+              <a href="{{ alt_links[loop.index0].1 }}">{{ code|upper }}</a>
+            </li>
+            {% endif %} {% endfor %}
           </ul>
         </div>
       </div>

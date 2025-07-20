@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx" class="js">
+<html lang="{{ lang }}" class="js">
   <head>
     <meta charset="utf-8" />
     <meta name="author" content="BlockchainConsultora.com" />
@@ -14,7 +14,11 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="/static/images/favicon.png" />
     <!-- Site Title  -->
-    <title>Tu Voto Decide | {% block title %}Mi Sitio{% endblock %}</title>
+    <title>Tu Voto Decide | {{ page_title }}</title>
+    {% for pair in alt_links %}
+    <link rel="alternate" hreflang="{{ pair.0 }}" href="{{ pair.1 }}" />
+    {% endfor %}
+
     <!-- Bundle and Base CSS -->
     <link rel="stylesheet" href="/static/css/vendor.bundle.css?ver=210" />
     <link rel="stylesheet" href="/static/css/style-azure.css?ver=210" />
