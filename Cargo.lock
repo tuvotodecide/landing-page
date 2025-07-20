@@ -972,6 +972,7 @@ dependencies = [
  "serde",
  "serde_json",
  "tera",
+ "walkdir",
 ]
 
 [[package]]

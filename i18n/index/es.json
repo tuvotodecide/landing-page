@@ -1,5 +1,7 @@
 {
   "page_title": "Inicio",
+  "meta_description": "La aplicación Tu Voto Decide es una iniciativa ciudadana liderada por Asoblockchain Bolivia, el desarrollo técnico de Blockchain Consultora, cuyo objetivo es hacer control electoral con tecnología Blockchain, basado en las  actas electorales de conteo de votos aplicada por primera vez en las elecciones generales de Bolivia 2025.",
+  "main_image": "http://tuvotodecide.com/static/images/header/main_image.png",
   "whatIs": {
     "section_title": "¿Cómo funciona?",
     "intro": "Introducción a la Plataforma",

@@ -1,34 +1,94 @@
 <!DOCTYPE html>
 <html lang="{{ lang }}" class="js">
   <head>
-    <meta charset="utf-8" />
-    <meta name="author" content="BlockchainConsultora.com" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta
-      name="description"
-      content="Aplicación boliviana de control electoral con blockchain"
-    />
-    <!-- Fav Icon  -->
-    <link rel="shortcut icon" href="/static/images/favicon.png" />
-    <!-- Site Title  -->
-    <title>Tu Voto Decide | {{ page_title }}</title>
-    {% for pair in alt_links %}
-    <link rel="alternate" hreflang="{{ pair.0 }}" href="{{ pair.1 }}" />
-    {% endfor %}
+    {# Favicons #}
+    <link rel="apple-touch-icon" sizes="57x57" href="/static/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/static/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/static/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/static/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/static/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/static/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/static/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/static/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/static/images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/static/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/static/images/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#16a4fd">
 
-    <!-- Bundle and Base CSS -->
+    {# Basics SEO #}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="author" content="BlockchainConsultora.com" />
+    <title> {{ t.page_title }} </title>
+    <meta name="description" content="{{ t.meta_description }}" />
+    <link rel="canonical" href="{{ canonical_url }}" />
+    
+    {# Multilingual #} {% for pair in alt_links %}
+    <link rel="alternate" hreflang="{{ pair.0 }}" href="{{ pair.1 }}" />
+     {% endfor %}
+    <link rel="alternate" hreflang="x-default" href="{{ default_url }}" />
+    {# Open Graph + Twitter #}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tu Voto Decide" />
+    <meta property="og:title" content="{{ t.page_title }}" />
+    <meta property="og:description" content="{{ t.meta_description }}" />
+    <meta property="og:url" content="{{ canonical_url }}" />
+    <meta property="og:image" content="{{ t.main_image }}" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ t.page_title }}" />
+    <meta name="twitter:description" content="{{ t.meta_description }}" />
+    <meta name="twitter:image" content="{{ t.main_image }}" />
+
+    {# Pre #}
+    <link
+      rel="preload"
+      href="/static/css/vendor.bundle.css?ver=210"
+      as="style"
+    />
+    <link rel="preload" href="/static/css/style-azure.css?ver=210" as="style" />
     <link rel="stylesheet" href="/static/css/vendor.bundle.css?ver=210" />
     <link rel="stylesheet" href="/static/css/style-azure.css?ver=210" />
-    <!-- Extra CSS -->
     <link rel="stylesheet" href="/static/css/theme.css?ver=210" />
-
-    <!-- Additional CSS -->
-    {% if extra_css %} {% for sheet in extra_css %}
+    {% if extra_css %}{% for sheet in extra_css %}
     <link rel="stylesheet" href="{{ sheet }}" />
-    {% endfor %} {% endif %} {% block head_extra %}{% endblock %}
+    {% endfor %}{% endif %} {% block head_extra %}{% endblock %} 
+
+    {# — Structured Data (Organization + WebSite + SearchAction) #}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://blockchainconsultora.com/#author",
+        "name": "Huáscar Miranda",
+        "url": "https://www.linkedin.com/in/huascarmiranda"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://asoblockchainbolivia.org/#org",
+        "name": "Asoblockchain Bolivia",
+        "url": "https://asoblockchainbolivia.org"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://tuvotodecide.com/#website",
+        "author":    { "@id": "https://blockchainconsultora.com/#author" },
+        "publisher": { "@id": "https://asoblockchainbolivia.org/#org" },
+        "url": "https://tuvotodecide.com/{{ lang }}",
+        "inLanguage": "{{ lang }}"
+      }
+    ]
+  }
+  </script>
+
   </head>
   <body class="nk-body body-wider mode-onepage">
     <div class="nk-wrap">
