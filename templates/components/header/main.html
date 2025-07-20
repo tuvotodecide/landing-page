@@ -26,9 +26,9 @@
           <ul
             class="toggle-class toggle-drop text-center drop-list drop-list-xs"
           >
-            {% for code in alt_links | map(attribute=0) %} {% if code != lang %}
+            {% for pair in alt_links %} {% if pair[0] != lang %}
             <li>
-              <a href="{{ alt_links[loop.index0].1 }}">{{ code|upper }}</a>
+              <a href="{{ pair[1] }}">{{ pair[0] | upper }}</a>
             </li>
             {% endif %} {% endfor %}
           </ul>
