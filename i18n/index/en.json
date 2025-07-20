@@ -1,14 +1,132 @@
 {
   "page_title": "Home",
-  "meta_description": "La aplicación Tu Voto Decide es una iniciativa ciudadana liderada por Asoblockchain Bolivia, el desarrollo técnico de Blockchain Consultora, cuyo objetivo es hacer control electoral con tecnología Blockchain, basado en las  actas electorales de conteo de votos aplicada por primera vez en las elecciones generales de Bolivia 2025.",
+  "meta_description": "The Tu Voto Decide application is a citizen initiative led by Asoblockchain Bolivia, with technical development by Blockchain Consultora, whose objective is to conduct electoral control using Blockchain technology, based on the electoral vote counting records applied for the first time in the general elections of Bolivia 2025.",
   "main_image": "http://tuvotodecide.com/static/images/header/main_image.png",
   "whatIs": {
-    "section_title": "How it works?",
-    "intro": "Platform introduction",
+    "section_title": "How does it work?",
+    "intro": "Introduction to the Platform",
     "paragraphs": [
-      "In a context where trust in electoral processes is essential…",
-      "This application allows users to create a self‑sovereign digital identity integrated with Wira Wallet…",
-      "Other participants download these records to validate them…"
+      "In a context where trust in electoral processes is fundamental, Tu Voto Decide emerges as a blockchain-based solution for citizen monitoring.",
+      "This application allows users to create a sovereign digital identity integrated with the Wira Wallet ecosystem. Individuals register by validating their information through artificial intelligence, which compares a selfie with official data. Once the identity is registered, users can capture photos of electoral records, sign them electronically and convert them into NFTs to ensure their authenticity.",
+      "Other participants download these records to validate them, and the results are consolidated on the blockchain, offering unalterable transparency. The pilot will be launched in the general elections of Bolivia 2025, with emphasis on the second round, and will expand to municipal, national and international levels for institutions that require secure electronic voting."
+    ]
+  },
+  "banner": {
+    "subtitle": "An app that revolutionizes Electoral Control with Blockchain",
+    "partners": "Partners"
+  },
+  "features": {
+    "header": "Key Features",
+    "title": "Main Features",
+    "description": "Explore the tools that make possible an empowered and verifiable citizen electoral control.",
+    "title1": "Sovereign Digital Identity",
+    "description1": "Register securely with AI validation, creating an identity protected by smart contracts, part of the Wira Wallet ecosystem.",
+    "title2": "Conversion of Records into NFTs",
+    "description2": "Capture and electronically sign electoral records, converting them into non-fungible tokens that guarantee immutability and easy validation by the community.",
+    "title3": "Blockchain Validation",
+    "description3": "Access consolidated results backed by blockchain, with visualizations of use and authenticity for transparent monitoring in elections.",
+    "whatsapp": "Whatsapp Communities"
+  },
+  "roadmap": {
+    "header": "Roadmap",
+    "title": "Our path towards transparency",
+    "description": "A structured plan for the development and deployment of Tu Voto Decide, from the pilot in Bolivia to its global expansion.",
+    "milestones": [
+      {
+        "done": true,
+        "date": "March 2025",
+        "event": "Ideation and organization"
+      },
+      {
+        "done": true,
+        "date": "May 2025",
+        "event": "Call for volunteers"
+      },
+      {
+        "done": true,
+        "date": "July 2025",
+        "event": "Development and Initial Launch"
+      },
+      {
+        "done": false,
+        "date": "August 2025",
+        "event": "Pilot in Bolivia 2025 Elections"
+      },
+      {
+        "done": false,
+        "date": "October 2025",
+        "event": "Corrections and expansion in use"
+      },
+      {
+        "done": false,
+        "date": "December 2025",
+        "event": "Official use in local private institutions"
+      },
+      {
+        "done": false,
+        "date": "March 2026",
+        "event": "Official use in subnational elections"
+      },
+      {
+        "done": false,
+        "date": "December 2025",
+        "event": "Official use in international private institutions"
+      },
+      {
+        "done": false,
+        "date": "2027",
+        "event": "Official use in international governments"
+      }
+    ]
+  },
+  "app": {
+    "header": "Benefits",
+    "title": "Why participate?",
+    "description": "The electoral control application is part of the digital identity ecosystem of the Wira Wallet application, so by using it you already acquire some benefits.",
+    "benefits": [
+      {
+        "content": "You acquire sovereign digital identity, with which to sign in other processes.",
+        "delay": ".45"
+      },
+      {
+        "content": "By obtaining captures of the records, you acquire an NFT as a certificate of your participation.",
+        "delay": ".5"
+      },
+      {
+        "content": "If you attest truthfully, you acquire Wira and Asoblockchain tokens.",
+        "delay": ".55"
+      },
+      {
+        "content": "You acquire a self-custody wallet for your cryptos.",
+        "delay": ".6"
+      },
+      {
+        "content": "You can benefit from the features of the Wira wallet.",
+        "delay": ".65"
+      }
+    ],
+    "wira": "What is WIRA?"
+  },
+  "team": {
+    "header": "Our organization",
+    "title": "Who are we?",
+    "description": "The electoral control application is part of the digital identity ecosystem of the Wira Wallet application, so by using it you already acquire some benefits.",
+    "members": [
+      {
+        "imageColor": "huascar.jpg",
+        "imageBN": "huascarbn.png",
+        "name": "Huáscar ",
+        "lastName": "Miranda M.",
+        "title": "CTO & Lead Blockchain",
+        "x": "https://x.com/Huascarmm",
+        "linkedIn": "https://www.linkedin.com/in/huascarmiranda",
+        "small": "Expert in creation and management of blockchain projects",
+        "large": "With more than 6 years of experience in the technical creation and management of blockchain projects, he is in charge of creating and ensuring the technical quality and security of our application.",
+        "skills": [
+          { "subject": "Blockchain", "level": "90" },
+          { "subject": "Technical team management", "level": "70" }
+        ]
+      }
     ]
   }
 }

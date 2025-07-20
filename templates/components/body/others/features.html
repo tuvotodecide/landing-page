@@ -6,14 +6,13 @@
         data-animate="fadeInUp"
         data-delay=".1"
       >
-        Funcionalidades Clave
+        {{ t.features.header }}
       </h6>
       <h2 class="title animated" data-animate="fadeInUp" data-delay=".2">
-        Características Principales
+        {{ t.features.title }}
       </h2>
       <p class="animated" data-animate="fadeInUp" data-delay=".3">
-        Explora las herramientas que hacen posible un control electoral
-        ciudadano empoderado y verificable.
+        {{ t.features.description }}
       </p>
     </div>
     <div class="nk-block">
@@ -28,12 +27,8 @@
               <img src="/static/images/gfx/gfx-sm-e-light.png" alt="feature" />
             </div>
             <div class="feature-text">
-              <h5 class="title title-md">Identidad Digital Soberana</h5>
-              <p>
-                Regístrate de forma segura con validación por IA, creando una
-                identidad protegida mediante contratos inteligentes, parte del
-                ecosistema de Wira Wallet.
-              </p>
+              <h5 class="title title-md">{{ t.features.title1 }}</h5>
+              <p>{{ t.features.description1}}</p>
             </div>
           </div>
         </div>
@@ -47,12 +42,8 @@
               <img src="/static/images/gfx/gfx-sm-f-light.png" alt="feature" />
             </div>
             <div class="feature-text">
-              <h5 class="title title-md">Conversión de Actas en NFTs</h5>
-              <p>
-                Captura y firma electrónicamente actas electorales,
-                convirtiéndolas en tokens no fungibles que garantizan
-                inmutabilidad y fácil validación por la comunidad.
-              </p>
+              <h5 class="title title-md">{{ t.features.title2 }}</h5>
+              <p>{{ t.features.description2}}</p>
             </div>
           </div>
         </div>
@@ -66,12 +57,8 @@
               <img src="/static/images/gfx/gfx-sm-g-light.png" alt="feature" />
             </div>
             <div class="feature-text">
-              <h5 class="title title-md">Validación Blockchain</h5>
-              <p>
-                Accede a resultados consolidados respaldados en blockchain, con
-                visualizaciones de uso y autenticidad para un monitoreo
-                transparente en elecciones.
-              </p>
+              <h5 class="title title-md">{{ t.features.title3 }}</h5>
+              <p>{{ t.features.description3}}</p>
             </div>
           </div>
         </div>
@@ -92,7 +79,7 @@
             class="link link-light link-xs"
           >
             <em class="link-icon fa fa-whatsapp-square"></em
-            ><span>Grupos de Whatsapp</span>
+            ><span>{{ t.features.whatsapp}} </span>
           </a>
         </div>
       </div>

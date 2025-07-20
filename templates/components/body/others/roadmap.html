@@ -6,14 +6,13 @@
         data-animate="fadeInUp"
         data-delay=".1"
       >
-        Roadmap
+        {{ t.roadmap.header }}
       </h6>
       <h2 class="title animated" data-animate="fadeInUp" data-delay=".2">
-        Nuestro camino hacia la transparencia
+        {{ t.roadmap.title }}
       </h2>
       <p class="animated" data-animate="fadeInUp" data-delay=".3">
-        Un plan estructurado para el desarrollo y despliegue de Tu Voto Decide,
-        desde el piloto en Bolivia hasta su expansión global.
+        {{ t.roadmap.description }}
       </p>
     </div>
     <!-- Block @s -->
@@ -31,50 +30,18 @@
               data-items-mobile-s="1"
               data-navs="true"
             >
-              <div class="roadmap roadmap-s6 roadmap-s6-2-1 roadmap-done">
-                <div class="roadmap-head roadmap-head-s6">
-                  <span class="roadmap-time roadmap-time-s6">Julio 2025</span>
-                </div>
-                <p>Desarrollo y Lanzamiento Inicial</p>
-              </div>
-              <div class="roadmap roadmap-s6 roadmap-s6-3-2">
-                <div class="roadmap-head roadmap-head-s6">
-                  <span class="roadmap-time roadmap-time-s6">Agosto 2025</span>
-                </div>
-                <p>Piloto en Elecciones Bolivia 2025</p>
-              </div>
-              <div class="roadmap roadmap-s6 roadmap-s6-1-2">
-                <div class="roadmap-head roadmap-head-s6">
-                  <span class="roadmap-time roadmap-time-s6">Octubre 2025</span>
-                </div>
-                <p>Uso masivo en la segunda vuelta</p>
-              </div>
-              <div class="roadmap roadmap-s6 roadmap-s6-1-2">
+              {% for milestone in t.roadmap.milestones %}
+              <div
+                class="roadmap roadmap-s6 roadmap-s6-2-1 {% if milestone.done %} roadmap-done {% endif %}"
+              >
                 <div class="roadmap-head roadmap-head-s6">
                   <span class="roadmap-time roadmap-time-s6"
-                    >Diciembre 2025</span
+                    >{{milestone.date}}</span
                   >
                 </div>
-                <p>Uso oficial en instituciones locales</p>
+                <p>{{milestone.event}}</p>
               </div>
-              <div class="roadmap roadmap-s6 roadmap-s6-3-2">
-                <div class="roadmap-head roadmap-head-s6">
-                  <span class="roadmap-time roadmap-time-s6">Abril 2026</span>
-                </div>
-                <p>Uso oficial en elecciones municipales</p>
-              </div>
-              <div class="roadmap roadmap-s6 roadmap-s6-1-3">
-                <div class="roadmap-head roadmap-head-s6">
-                  <span class="roadmap-time roadmap-time-s6">Junio 2026</span>
-                </div>
-                <p>Integración en instituciones internacionales</p>
-              </div>
-              <div class="roadmap roadmap-s6 roadmap-s6-3-2">
-                <div class="roadmap-head roadmap-head-s6">
-                  <span class="roadmap-time roadmap-time-s6">2027</span>
-                </div>
-                <p>Uso en otros países</p>
-              </div>
+              {% endfor %}
             </div>
           </div>
         </div>

@@ -6,52 +6,42 @@
         data-animate="fadeInUp"
         data-delay=".1"
       >
-        Aplicación
+        {{t.app.header}}
       </h6>
       <h2 class="title animated" data-animate="fadeInUp" data-delay=".2">
-        Beneficios por participar
+        {{t.app.title}}
       </h2>
       <p class="animated" data-animate="fadeInUp" data-delay=".3">
-        Desde el momento de registrarte adquieres beneficios!
+        {{t.app.description}}
       </p>
     </div>
     <!-- Block @s -->
+
     <div class="nk-block nk-block-text-wrap">
       <div class="row align-items-center justify-content-center gutter-vr-40px">
         <div class="col-md-6 col-sm-9">
           <div class="nk-block-text pdb-l">
-            <p class="animated" data-animate="fadeInUp" data-delay=".4">
-              La aplicación de control electoral forma parte del ecosistema de
-              identidad digital de la aplicación Wira Wallet, por lo que al
-              usarla ya adquieres algunos beneficios.
-            </p>
+            <p class="animated" data-animate="fadeInUp" data-delay=".4"></p>
+
             <ul class="list list-dot pdb-r">
-              <li class="animated" data-animate="fadeInUp" data-delay=".45">
-                Adquieres identidad digital soberana, con la cual firmar en
-                otros procesos.
+              {% for benefit in t.app.benefits %}
+              <li
+                class="animated"
+                data-animate="fadeInUp"
+                data-delay="{{benefit.delay}}"
+              >
+                {{benefit.content}}
               </li>
-              <li class="animated" data-animate="fadeInUp" data-delay=".5">
-                Al obtener capturas de las actas, adquieres un NFT como
-                certificado de tu participación.
-              </li>
-              <li class="animated" data-animate="fadeInUp" data-delay=".55">
-                Si atestiguas con veracidad adquieres tokens Wira y
-                Asoblockchain.
-              </li>
-              <li class="animated" data-animate="fadeInUp" data-delay=".6">
-                Adquieres una billetera auto custodia para tus criptos.
-              </li>
-              <li class="animated" data-animate="fadeInUp" data-delay=".65">
-                Puedes beneficiarte de las características de la billetera Wira.
-              </li>
+              {% endfor %}
             </ul>
+
             <ul class="btn-grp justify-content-center justify-content-md-start">
               <li class="animated" data-animate="fadeInUp" data-delay=".75">
                 <a
                   target="_blank"
                   href="https://wirawallet.com"
                   class="btn btn-grad btn-md"
-                  >Más info de WIRA Wallet</a
+                  >{{t.app.wira}}</a
                 >
               </li>
               <!-- <li class="animated" data-animate="fadeInUp" data-delay=".85">
@@ -76,12 +66,13 @@
             data-animate="fadeInUp"
             data-delay=".6"
           >
-            <img src="/static/images/sc-large-o-dark.png" alt="app" />
+            <img src="/static/images/sc-large-o-dark.png" alt="benefits" />
           </div>
         </div>
       </div>
       <!-- .row -->
     </div>
+
     <!-- .block @e -->
   </div>
 </section>

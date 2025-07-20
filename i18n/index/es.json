@@ -10,5 +10,123 @@
       "Esta aplicación permite a los usuarios crear una identidad digital soberana integrada con el ecosistema Wira Wallet. Los individuos se registran validando su información mediante inteligencia artificial, que compara una selfie con datos oficiales. Una vez registrada la identidad, los usuarios pueden capturar fotos de actas electorales, firmarlas electrónicamente y convertirlas en NFTs para asegurar su autenticidad.",
       "Otros participantes descargan estas actas para validarlas, y los resultados se consolidan en la blockchain, ofreciendo transparencia inalterable. El piloto se lanzará en las elecciones generales de Bolivia 2025, con énfasis en la segunda vuelta, y se expandirá a niveles municipales, nacionales e internacionales para instituciones que requieran voto electrónico seguro."
     ]
+  },
+  "banner": {
+    "subtitle": "Una app que revoluciona el Control Electoral con Blockchain",
+    "partners": "Socios"
+  },
+  "features": {
+    "header": "Funcionalidades Clave",
+    "title": "Características Principales",
+    "description": "Explora las herramientas que hacen posible un control electoral ciudadano empoderado y verificable.",
+    "title1": "Identidad Digital Soberana",
+    "description1": "Regístrate de forma segura con validación por IA, creando unaidentidad protegida mediante contratos inteligentes, parte delecosistema de Wira Wallet.",
+    "title2": "Conversión de Actas en NFTs",
+    "description2": "Captura y firma electrónicamente actas electorales, convirtiéndolas en tokens no fungibles que garantizan inmutabilidad y fácil validación por la comunidad.",
+    "title3": "Validación Blockchain",
+    "description3": "Accede a resultados consolidados respaldados en blockchain, con visualizaciones de uso y autenticidad para un monitoreo transparente en elecciones.",
+    "whatsapp": "Comunidades de Whatsapp"
+  },
+  "roadmap": {
+    "header": "Roadmap",
+    "title": "Nuestro camino hacia la transparencia",
+    "description": "Un plan estructurado para el desarrollo y despliegue de Tu Voto Decide, desde el piloto en Bolivia hasta su expansión global.",
+    "milestones": [
+      {
+        "done": true,
+        "date": "Marzo 2025",
+        "event": "Ideación y organización"
+      },
+      {
+        "done": true,
+        "date": "Mayo 2025",
+        "event": "Convocatoria a voluntarios"
+      },
+      {
+        "done": true,
+        "date": "Julio 2025",
+        "event": "Desarrollo y Lanzamiento Inicial"
+      },
+      {
+        "done": false,
+        "date": "Agosto 2025",
+        "event": "Piloto en Elecciones Bolivia 2025"
+      },
+      {
+        "done": false,
+        "date": "Octubre 2025",
+        "event": "Correcciones y expansión en el uso"
+      },
+      {
+        "done": false,
+        "date": "Diciembre 2025",
+        "event": "Uso oficial en instituciones privadas locales"
+      },
+      {
+        "done": false,
+        "date": "Marzo 2026",
+        "event": "Uso oficial en elecciones subnacionales"
+      },
+      {
+        "done": false,
+        "date": "Diciembre 2025",
+        "event": "Uso oficial en instituciones privadas internacionales"
+      },
+      {
+        "done": false,
+        "date": "2027",
+        "event": "Uso oficial en gobiernos internacionales"
+      }
+    ]
+  },
+  "app": {
+    "header": "Beneficios",
+    "title": "¿Por qué participar?",
+    "description": "La aplicación de control electoral forma parte del ecosistema de identidad digital de la aplicación Wira Wallet, por lo que al usarla ya adquieres algunos beneficios.",
+    "benefits": [
+      {
+        "content": "Adquieres identidad digital soberana, con la cual firmar en otros procesos.",
+        "delay": ".45"
+      },
+      {
+        "content": "Al obtener capturas de las actas, adquieres un NFT como certificado de tu participación.",
+        "delay": ".5"
+      },
+      {
+        "content": "Si atestiguas con veracidad adquieres tokens Wira y Asoblockchain.",
+        "delay": ".55"
+      },
+      {
+        "content": "Adquieres una billetera auto custodia para tus criptos.",
+        "delay": ".6"
+      },
+      {
+        "content": "Puedes beneficiarte de las características de la billetera Wira.",
+        "delay": ".65"
+      }
+    ],
+    "wira": "¿Qué es WIRA?"
+  },
+  "team": {
+    "header": "Nuestra organización",
+    "title": "¿Quiénes somos?",
+    "description": "La aplicación de control electoral forma parte del ecosistema de identidad digital de la aplicación Wira Wallet, por lo que al usarla ya adquieres algunos beneficios.",
+    "members": [
+      {
+        "imageColor": "huascar.jpg",
+        "imageBN": "huascarbn.png",
+        "name": "Huáscar ",
+        "lastName": "Miranda M.",
+        "title": "CTO &amp; Lead Blockchain",
+        "x": "https://x.com/Huascarmm",
+        "linkedIn": "https://www.linkedin.com/in/huascarmiranda",
+        "small": "Experto en creación y gestión de proyectos blockchain",
+        "large": "Con una experiencia de mas de 6 años en la creación técnica y gestión de poryectos blockchain, es el encargado de crear y asegurar la calidad técnica y seguridad de nuestra aplicación.",
+        "skills": [
+          { "subject": "Blockchain", "level": "90" },
+          { "subject": "Gestión equipos técnicos", "level": "70" }
+        ]
+      }
+    ]
   }
 }
