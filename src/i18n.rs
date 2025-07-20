@@ -16,6 +16,22 @@ impl Translations {
               .map(|m| m.keys().map(String::as_str).collect())
               .unwrap_or_default()
     }
+    pub fn get_pair(&self, page: &str, lang: &str) -> (&Value, &Value) {
+        let common_map = self.0
+            .get("common")
+            .expect("[i18n] Falta carpeta common");
+
+        let common = common_map
+            .get(lang)
+            .or_else(|| common_map.get("es"))
+            .expect("[i18n] Falta common/es.json");
+
+        let page_json = self
+            .get(page, lang)
+            .unwrap_or_else(|| self.get(page, "es").expect("[i18n] Falta página default"));
+
+        (page_json, common)
+    }
 }
 
 pub fn load(dir: &str) -> std::io::Result<Translations> {

@@ -8,7 +8,7 @@
           <div class="col-lg-4 col-sm-6">
             <div class="wgs wgs-menu">
               <a
-                href="#"
+                href="https://tuvotodecide.com/"
                 class="wgs-logo animated"
                 data-animate="fadeInUp"
                 data-delay=".1"
@@ -16,22 +16,32 @@
                 <img src="/static/images/logo-full-white.png" alt="logo" />
               </a>
               <ul class="social">
-                <li class="animated" data-animate="fadeInUp" data-delay=".45">
-                  <a href="#"><em class="social-icon fab fa-bitcoin"></em></a>
-                </li>
                 <li class="animated" data-animate="fadeInUp" data-delay=".25">
-                  <a href="#"
+                  <a
+                    target="_blank"
+                    href="https://www.facebook.com/AsoBlockchainBolivia"
                     ><em class="social-icon fab fa-facebook-f"></em
                   ></a>
                 </li>
                 <li class="animated" data-animate="fadeInUp" data-delay=".3">
-                  <a href="#"><em class="social-icon fab fa-twitter"></em></a>
+                  <a target="_blank" href="https://x.com/Asoblochainbo"
+                    ><em class="social-icon fab fa-twitter"></em
+                  ></a>
                 </li>
-                <li class="animated" data-animate="fadeInUp" data-delay=".35">
-                  <a href="#"><em class="social-icon fab fa-medium-m"></em></a>
+
+                <li class="animated" data-animate="fadeInUp" data-delay=".4">
+                  <a
+                    target="_blank"
+                    href="https://www.tiktok.com/@asoblokchainbolivia"
+                    ><em class="social-icon fab fa-tiktok"></em
+                  ></a>
                 </li>
                 <li class="animated" data-animate="fadeInUp" data-delay=".4">
-                  <a href="#"><em class="social-icon fab fa-github"></em></a>
+                  <a
+                    target="_blank"
+                    href="https://www.linkedin.com/company/asociacion-de-blockchain-y-tecnologias-emergentes"
+                    ><em class="social-icon fab fa-linkedin"></em
+                  ></a>
                 </li>
               </ul>
             </div>
@@ -44,7 +54,7 @@
                 data-animate="fadeInUp"
                 data-delay=".55"
               >
-                Únete a nuestra comunidad de:
+                {{c.footer.joinUs}}:
               </h6>
               <div class="wgs-body">
                 <form
@@ -103,23 +113,23 @@
               <div class="copyright-text copyright-text-s3">
                 <p>
                   <span class="d-block"
-                    >Copyright &copy; 2025. Sistema elaborado para
+                    >{{c.footer.copyright}}
                     <a target="_blank" href="https://asoblockchainbolivia.org"
                       >Asoblockchain Bolivia</a
                     >
-                    por
+                    {{c.footer.by}}
                     <a target="_blank" href="https://blockchainconsultora.com"
                       >Blockchain Consultora</a
                     >
                   </span>
-                  Todos los derechos están reservados.
+                  {{c.footer.reserved}}
                 </p>
               </div>
             </div>
             <div class="col-lg-5 text-lg-end">
               <ul class="footer-links">
-                <li><a href="#">Políticas de Privacidad</a></li>
-                <li><a href="#">Términos &amp; Condiciones</a></li>
+                <li><a href="#">{{c.footer.privacy}} </a></li>
+                <li><a href="#">{{c.footer.terms}} </a></li>
                 <li class="language-switcher toggle-wrap">
                   <a class="toggle-tigger" href="#">{{ lang|upper }}</a>
                   <ul

@@ -1,0 +1,20 @@
+{
+  "navbar": {
+    "menu": [
+      { "href": "how", "content": "How does it work?" },
+      { "href": "features", "content": "Features" },
+      { "href": "roadmap", "content": "Roadmap" },
+      { "href": "benefits", "content": "Benefits" },
+      { "href": "team", "content": "About Us" }
+    ],
+    "download": "Download"
+  },
+  "footer": {
+    "joinUs": "Join our community",
+    "copyright": "Copyright © 2025. System developed for",
+    "by": "by",
+    "reserved": "All rights reserved.",
+    "privacy": "Privacy Policies",
+    "terms": "Terms & Conditions"
+  }
+}

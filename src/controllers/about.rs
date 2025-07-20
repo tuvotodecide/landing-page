@@ -13,18 +13,19 @@ pub async fn about(
         conn: ConnectionInfo,
 ) -> Result<HttpResponse> {
     let lang = req.match_info().get("lang").unwrap_or("es");
-    let t = tr.get(PAGE, lang).unwrap_or_else(|| tr.get(PAGE, "es").unwrap());
+    let (page_json, common_json) = tr.get_pair(PAGE, lang);
 
     let scheme_host = format!("{}://{}", conn.scheme(), conn.host());  // usa ConnectionInfo :contentReference[oaicite:4]{index=4}
     let canonical_url = format!("{scheme_host}{}", req.uri().path());
     let default_url   = format!("{scheme_host}/es/");
 
     let mut ctx = Context::new();
-    ctx.insert("t", &t);
+    ctx.insert("t", &page_json);
     ctx.insert("lang", &lang);
     ctx.insert("canonical_url", &canonical_url);
     ctx.insert("default_url",   &default_url);
     ctx.insert("show_header", &true);
+    ctx.insert("c", &common_json);
 
     let mut alt = Vec::new();
     for code in tr.langs_for(PAGE) {

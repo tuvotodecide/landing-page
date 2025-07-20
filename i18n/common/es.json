@@ -1,0 +1,20 @@
+{
+  "navbar": {
+    "menu": [
+      { "href": "how", "content": "¿Cómo funciona?" },
+      { "href": "features", "content": "Características" },
+      { "href": "roadmap", "content": "Roadmap" },
+      { "href": "benefits", "content": "Beneficios" },
+      { "href": "team", "content": "¿Quiénes somos?" }
+    ],
+    "download": "Descargar"
+  },
+  "footer": {
+    "joinUs": "Únete a nuestra comunidad",
+    "copyright": "Copyright &copy; 2025. Sistema elaborado para",
+    "by": "por",
+    "reserved": "Todos los derechos están reservados.",
+    "privacy": "Políticas de Privacidad",
+    "terms": "Términos &amp; Condiciones"
+  }
+}

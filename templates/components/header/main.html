@@ -50,21 +50,13 @@
             data-animate="fadeInDown"
             data-delay=".75"
           >
+            {% for menu in c.navbar.menu %}
             <li class="menu-item">
-              <a class="menu-link nav-link" href="#how">¿Cómo funciona?</a>
+              <a class="menu-link nav-link" href="#{{menu.href}}"
+                >{{menu.content}}</a
+              >
             </li>
-            <li class="menu-item">
-              <a class="menu-link nav-link" href="#features">Características</a>
-            </li>
-            <li class="menu-item">
-              <a class="menu-link nav-link" href="#roadmap">Roadmap</a>
-            </li>
-            <li class="menu-item">
-              <a class="menu-link nav-link" href="#benefits">Beneficios</a>
-            </li>
-            <li class="menu-item">
-              <a class="menu-link nav-link" href="#org">¿Quiénes somos?</a>
-            </li>
+            {% endfor %}
           </ul>
           <ul
             class="menu-btns animated"
@@ -76,7 +68,7 @@
                 href="https://play.google.com/store/apps/details?id=com.tuvotodecide"
                 target="_blank"
                 class="btn btn-rg btn-auto btn-outline btn-grad on-bg-theme-dark-alt"
-                ><span>Descargar</span></a
+                ><span>{{c.navbar.download}}</span></a
               >
             </li>
             <!-- <li>
