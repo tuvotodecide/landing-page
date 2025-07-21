@@ -1,51 +1,60 @@
 # syntax=docker/dockerfile:1.7
 ARG RUST_VERSION=1.88
+#1.BUILD
 FROM --platform=$BUILDPLATFORM rust:${RUST_VERSION}-slim-bookworm AS builder
 ARG TARGETARCH
-
-# 1) Instalar toolchain/linker adecuado
-RUN if [ "$TARGETARCH" = "arm64" ]; then \
-      apt-get update && \
-      apt-get install -y --no-install-recommends gcc-aarch64-linux-gnu && \
-      rustup target add aarch64-unknown-linux-gnu; \
-    else \
-      rustup target add x86_64-unknown-linux-gnu; \
-    fi
+ARG BUILDPLATFORM
 
 WORKDIR /app
 
-# 2) Caché de dependencias
-COPY Cargo.toml Cargo.lock ./
-RUN mkdir src && echo "fn main() {}" > src/main.rs
 RUN if [ "$TARGETARCH" = "arm64" ]; then \
-      cargo build --release --target aarch64-unknown-linux-gnu; \
-    else \
-      cargo build --release --target x86_64-unknown-linux-gnu; \
+        apt-get update && \
+        dpkg --add-architecture arm64 && \
+        apt-get update && \
+        apt-get install -y --no-install-recommends \
+            gcc-aarch64-linux-gnu \
+            binutils-aarch64-linux-gnu \
+            libc6-dev-arm64-cross && \
+        rm -rf /var/lib/apt/lists/* && \
+        rustup target add aarch64-unknown-linux-gnu && \
+        mkdir -p .cargo && \
+        echo "[target.aarch64-unknown-linux-gnu]" >> .cargo/config.toml && \
+        echo 'linker = "aarch64-linux-gnu-gcc"' >> .cargo/config.toml; \
     fi
-RUN rm -rf src
 
-# 3) Código de la app
-COPY src       ./src
+COPY Cargo.toml Cargo.lock ./
+
+RUN --mount=type=cache,target=/usr/local/cargo/registry \
+    --mount=type=cache,target=/app/target \
+    mkdir -p src && \
+    echo 'fn main() {}' > src/main.rs && \
+    CARGO_BUILD_TARGET=$( [ "$TARGETARCH" = "amd64" ] && echo "x86_64-unknown-linux-gnu" || echo "aarch64-unknown-linux-gnu" ) && \
+    cargo fetch --target $CARGO_BUILD_TARGET && \
+    rm -rf src
+
+COPY src ./src
+
+RUN --mount=type=cache,target=/usr/local/cargo/registry \
+    --mount=type=cache,target=/app/target \
+    CARGO_BUILD_TARGET=$( [ "$TARGETARCH" = "amd64" ] && echo "x86_64-unknown-linux-gnu" || echo "aarch64-unknown-linux-gnu" ) && \
+    cargo build --release --target $CARGO_BUILD_TARGET --locked && \
+    mkdir -p /output && \
+    mv /app/target/$CARGO_BUILD_TARGET/release/landing_tuvotodecide /output/app
+
+# RUNTIME
+FROM --platform=$TARGETPLATFORM debian:bookworm-slim AS runtime
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
 COPY templates ./templates
 COPY static    ./static
-RUN if [ "$TARGETARCH" = "arm64" ]; then \
-      cargo build --release --target aarch64-unknown-linux-gnu; \
-    else \
-      cargo build --release --target x86_64-unknown-linux-gnu; \
-    fi
+COPY i18n    ./i18n
 
-# 4) Recolectar binario final en /app/dist
-RUN mkdir -p /app/dist && \
-    if [ "$TARGETARCH" = "arm64" ]; then \
-      cp target/aarch64-unknown-linux-gnu/release/wira_page /app/dist/wira_page; \
-    else \
-      cp target/x86_64-unknown-linux-gnu/release/wira_page /app/dist/wira_page; \
-    fi
+COPY --from=builder /output/app /usr/local/bin/app
 
-# 5) Imagen final minimalista
-FROM gcr.io/distroless/cc-debian12 AS runtime
 EXPOSE 8080
-HEALTHCHECK --interval=5s --timeout=2s --retries=3 \
-  CMD curl -fsS http://127.0.0.1:8080/health || exit 1
-COPY --from=builder /app/dist/wira_page /usr/local/bin/wira_page
-ENTRYPOINT ["/usr/local/bin/wira_page"]
+CMD ["app"]
