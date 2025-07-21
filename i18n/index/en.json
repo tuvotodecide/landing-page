@@ -126,6 +126,37 @@
           { "subject": "Blockchain", "level": "90" },
           { "subject": "Technical team management", "level": "70" }
         ]
+      },
+      {
+        "imageColor": "cecilia.jpg",
+        "imageBN": "ceciliabn.png",
+        "name": "Cecilia ",
+        "lastName": "Contreras",
+        "title": "COO ",
+        "x": "https://x.com/Ceci_Sakura007",
+        "linkedIn": "https://x.com/Ceci_Sakura007",
+        "small": "Expert in operations, institutional relations both national and international",
+        "large": "Cecilia is a Blockchain expert and works on international protocols related to blockchain, organizes logistical operations for app testing.",
+        "skills": [
+          { "subject": "Blockchain", "level": "90" },
+          { "subject": "Public Relations", "level": "60" }
+        ]
+      },
+      {
+        "imageColor": "alejandro.png",
+        "imageBN": "alejandrobn.png",
+        "name": "Alejandro",
+        "lastName": "Chirinos",
+        "title": "CEO",
+        "x": "https://x.com/mauro_chirinos",
+        "linkedIn": "https://www.linkedin.com/in/mauro-alejandro-chirinos-chuquimia-21a2b12a2",
+        "small": "Expert in public relations, blockchain education",
+        "large": "Alejandro is a political scientist, founder of the Latin American Blockchain Electoral Innovation Committee, expert in blockchain education",
+        "skills": [
+          { "subject": "Blockchain", "level": "90" },
+          { "subject": "Team Management", "level": "70" },
+          { "subject": "Public Relations", "level": "80" }
+        ]
       }
     ]
   }

@@ -33,7 +33,7 @@
                 class="no-bdrs"
               />
               <a
-                href="#team-popup-1"
+                href="#team-popup-{{ loop.index }}"
                 class="team-show content-popup"
                 data-overlay="bg-grad-alt"
               ></a>
@@ -56,7 +56,7 @@
             </ul>
           </div>
           <!-- Start .team-profile  -->
-          <div id="team-popup-1" class="team-popup mfp-hide">
+          <div id="team-popup-{{ loop.index }}" class="team-popup mfp-hide">
             <a title="Close" class="mfp-close">×</a>
             <div class="row align-items-start">
               <div class="col-md-6">

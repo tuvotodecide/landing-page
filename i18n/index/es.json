@@ -117,7 +117,7 @@
         "imageBN": "huascarbn.png",
         "name": "Huáscar",
         "lastName": "Miranda M.",
-        "title": "CTO y Líder Blockchain",
+        "title": "CTO",
         "x": "https://x.com/Huascarmm",
         "linkedIn": "https://www.linkedin.com/in/huascarmiranda",
         "small": "Experto en creación y gestión de proyectos blockchain",
@@ -125,6 +125,37 @@
         "skills": [
           { "subject": "Blockchain", "level": "90" },
           { "subject": "Gestión equipos técnicos", "level": "70" }
+        ]
+      },
+      {
+        "imageColor": "cecilia.jpg",
+        "imageBN": "ceciliabn.png",
+        "name": "Cecilia ",
+        "lastName": "Contreras",
+        "title": "COO ",
+        "x": "https://x.com/Ceci_Sakura007",
+        "linkedIn": "https://x.com/Ceci_Sakura007",
+        "small": "Experta en operaciones, relaciones institucionales tanto nacionales como internacionales",
+        "large": "Cecilia es experta Blockchain y trabaja en protocolos internacionales relacionados con blockchain, organiza operaciones logisticas de testo de la app.",
+        "skills": [
+          { "subject": "Blockchain", "level": "90" },
+          { "subject": "Relaciones públicas", "level": "60" }
+        ]
+      },
+      {
+        "imageColor": "alejandro.png",
+        "imageBN": "alejandrobn.png",
+        "name": "Alejandro",
+        "lastName": "Chirinos",
+        "title": "CEO",
+        "x": "https://x.com/mauro_chirinos",
+        "linkedIn": "https://www.linkedin.com/in/mauro-alejandro-chirinos-chuquimia-21a2b12a2",
+        "small": "Experto en relaciones publicas, educación blockchain",
+        "large": "Alejandro es politólogo, fundador del Comite de Innovación Electoral Blockchain Latinoamericano, experto en educación blockchain",
+        "skills": [
+          { "subject": "Blockchain", "level": "90" },
+          { "subject": "Gestión equipos ", "level": "70" },
+          { "subject": "Relaciones públicas", "level": "80" }
         ]
       }
     ]
