@@ -103,13 +103,13 @@ jobs:
           }
 
           cmds=$(cat <<'EOS'
-aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REGISTRY
-docker pull $ECR_REGISTRY/$ECR_REPO:latest
-docker stop landing-tvd || true
-docker rm   landing-tvd || true
-docker run -d --name landing-tvd -p ${EXTERNAL_PORT:-3000}:8080 --restart unless-stopped $ECR_REGISTRY/$ECR_REPO:latest
-docker image prune -f
-EOS
+            aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REGISTRY
+            docker pull $ECR_REGISTRY/$ECR_REPO:latest
+            docker stop landing-tvd || true
+            docker rm   landing-tvd || true
+            docker run -d --name landing-tvd -p ${EXTERNAL_PORT:-3000}:8080 --restart unless-stopped $ECR_REGISTRY/$ECR_REPO:latest
+            docker image prune -f
+            EOS
           )
 
           CMD_ID=$(send_cmd "$cmds")
