@@ -18,12 +18,14 @@ env:
   IMAGE_TAG: ${{ github.sha }}
   BUILD_PLATFORMS: linux/arm64,linux/amd64
   CONTAINER_NAME: landing_tuvotodecide
-  EXTERNAL_PORT: 4000
+  EXTERNAL_PORT: 4000 # puerto público ↔ 8080 interno
 
+###############################################################################
 # 1) BUILD & PUSH                                                           ###
+###############################################################################
 jobs:
   build:
-    environment: devops_aws
+    environment: devops_aws # opcional: nombre del Environment de GH
     runs-on: ubuntu-22.04
     permissions:
       id-token: write
@@ -32,7 +34,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # (OPTIONAL) DEBUGGING  #
+      #########################################################################
+      # (OPCIONAL) Paso de depuración OIDC – descomenta cuando lo necesites   #
+      #########################################################################
       - name: Debug OIDC token
         env:
           ROLE_ARN: ${{ secrets.ROLE_TO_ASSUME }}
@@ -82,7 +86,9 @@ jobs:
             ${{ env.ECR_URI }}:${{ env.IMAGE_TAG }}
             ${{ env.ECR_URI }}:latest
 
-  # 2) DEPLOY ###
+  ###############################################################################
+  # 2) DEPLOY                                                                 ###
+  ###############################################################################
   deploy:
     needs: build
     runs-on: ubuntu-22.04
