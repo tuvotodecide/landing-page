@@ -29,6 +29,25 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Debug OIDC env
+        run: |
+          echo "ACTIONS_ID_TOKEN_REQUEST_URL=$ACTIONS_ID_TOKEN_REQUEST_URL"
+          echo "ACTIONS_ID_TOKEN_REQUEST_TOKEN=$ACTIONS_ID_TOKEN_REQUEST_TOKEN"
+
+      - name: Fetch & inspect GitHub OIDC token
+        run: |
+          TOKEN=$(curl -s \
+            -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL")
+          echo "OIDC JWT (truncated): ${TOKEN:0:100}..."
+          # Ahora intenta asumir rol manualmente:
+          aws sts assume-role-with-web-identity \
+            --role-arn "${{ secrets.ROLE_TO_ASSUME }}" \
+            --role-session-name debug-session \
+            --web-identity-token "$TOKEN" \
+            --debug
+
       # ---------- Login to AWS ----------
       - uses: aws-actions/configure-aws-credentials@v4
         with:
