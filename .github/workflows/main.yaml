@@ -19,16 +19,15 @@ env:
 
 jobs:
   # 1) BUILD & PUSH -------------------------------------------------------------
-
   build:
     name: Build & Push Docker image
     runs-on: ubuntu-latest
-    environment: devops_aws     # <- secrets de ese environment
+    environment: devops_aws # <- secrets de ese environment
     env:
-      AWS_REGION:   ${{ secrets.AWS_REGION }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
       ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
-      ECR_REPO:     ${{ secrets.ECR_REPOSITORY }}
-      IMAGE_TAG:    ${{ github.sha }}
+      ECR_REPO: ${{ secrets.ECR_REPOSITORY }}
+      IMAGE_TAG: ${{ github.sha }}
 
     steps:
       - name: Checkout
@@ -41,13 +40,13 @@ jobs:
         uses: docker/setup-buildx-action@v3
         with:
           driver-opts: image=moby/buildkit:v0.12.1
-      
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region:            ${{ env.AWS_REGION }}
+          aws-region: ${{ env.AWS_REGION }}
 
       - name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v2
@@ -72,21 +71,21 @@ jobs:
     runs-on: ubuntu-latest
     environment: devops_aws
     env:
-      AWS_REGION:     ${{ secrets.AWS_REGION }}
-      ECR_REGISTRY:   ${{ secrets.ECR_REGISTRY }}
-      ECR_REPO:       ${{ secrets.ECR_REPOSITORY }}
-      EC2_INSTANCE_ID:${{ secrets.EC2_INSTANCE_ID }}
-      PUBLIC_IP:      ${{ secrets.PUBLIC_IP }}
-      EXTERNAL_PORT:  ${{ secrets.EXTERNAL_PORT }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
+      ECR_REPO: ${{ secrets.ECR_REPOSITORY }}
+      EC2_INSTANCE_ID: ${{ secrets.EC2_INSTANCE_ID }}
+      PUBLIC_IP: ${{ secrets.PUBLIC_IP }}
+      EXTERNAL_PORT: ${{ secrets.EXTERNAL_PORT }}
       CONTAINER_NAME: landing-tvd
 
     steps:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region:            ${{ env.AWS_REGION }}
+          aws-region: ${{ env.AWS_REGION }}
 
       - name: Pull, stop & run container over SSM
         id: remotecmd
