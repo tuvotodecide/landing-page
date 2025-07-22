@@ -59,10 +59,9 @@ jobs:
           push: true
           platforms: ${{ env.BUILD_PLATFORMS }}
           tags: |
-            ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPO }}:${{ env.IMAGE_TAG }}
             ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPO }}:latest
-          cache-from: type=registry,ref=${{ env.ECR_REGISTRY }}/${{ env.ECR_REPO }}:${{ env.CACHE_TAG }}
-          cache-to: type=registry,ref=${{ env.ECR_REGISTRY }}/${{ env.ECR_REPO }}:${{ env.CACHE_TAG }},mode=max
+          cache-from: type=registry,ref=${{ env.ECR_REGISTRY }}/${{ env.ECR_REPO }}:latest
+          cache-to: type=inline
 
   # 2) DEPLOY --------------------------------
   deploy:
