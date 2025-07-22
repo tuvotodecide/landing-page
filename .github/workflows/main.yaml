@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: devops_aws # <- secrets de ese environment
     env:
-      AWS_REGION: ${{ secrets.AWS_REGION }}
+      AWS_REGION: ${{ vars.AWS_REGION }}
       ECR_REGISTRY: ${{ vars.ECR_REGISTRY }}
       ECR_REPO: ${{ vars.ECR_REPOSITORY }}
       IMAGE_TAG: ${{ github.sha }}
@@ -71,7 +71,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: devops_aws
     env:
-      AWS_REGION: ${{ secrets.AWS_REGION }}
+      AWS_REGION: ${{ vars.AWS_REGION }}
       ECR_REGISTRY: ${{ vars.ECR_REGISTRY }}
       ECR_REPO: ${{ vars.ECR_REPOSITORY }}
       EC2_INSTANCE_ID: ${{ secrets.EC2_INSTANCE_ID }}
