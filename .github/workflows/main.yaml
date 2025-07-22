@@ -1,4 +1,4 @@
-name: CI-CD
+name: CI‑CD
 
 on:
   push:
@@ -17,9 +17,11 @@ env:
   ECR_URI: ${{ vars.ECR_URI }}
   IMAGE_TAG: ${{ github.sha }}
   BUILD_PLATFORMS: linux/arm64,linux/amd64
+  CONTAINER_NAME: landing_tuvotodecide
+  EXTERNAL_PORT: 4000
 
+# 1) BUILD & PUSH                                                           ###
 jobs:
-  # 1) BUILD & PUSH ###
   build:
     environment: devops_aws
     runs-on: ubuntu-22.04
@@ -30,31 +32,34 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Debug OIDC env
+      # (OPTIONAL) DEBUGGING  #
+      - name: Debug OIDC token
+        env:
+          ROLE_ARN: ${{ secrets.ROLE_TO_ASSUME }}
         run: |
-          echo "ACTIONS_ID_TOKEN_REQUEST_URL=$ACTIONS_ID_TOKEN_REQUEST_URL"
-          echo "ACTIONS_ID_TOKEN_REQUEST_TOKEN=$ACTIONS_ID_TOKEN_REQUEST_TOKEN"
-
-      - name: Fetch & inspect GitHub OIDC token
-        run: |
-          TOKEN=$(curl -s \
-            -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+          echo "::group::OIDC env"
+          echo "URL  = $ACTIONS_ID_TOKEN_REQUEST_URL"
+          echo "TOKEN= ${ACTIONS_ID_TOKEN_REQUEST_TOKEN:0:50}..."
+          echo "::endgroup::"
+          # Pedimos el JWT
+          IDTOKEN=$(curl -sH "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
             "$ACTIONS_ID_TOKEN_REQUEST_URL")
-          echo "OIDC JWT (truncated): ${TOKEN:0:100}..."
-          # Ahora intenta asumir rol manualmente:
+          echo "::group::STS assume‑role‑with‑web‑identity"
           aws sts assume-role-with-web-identity \
-            --role-arn "${{ secrets.ROLE_TO_ASSUME }}" \
+            --role-arn "$ROLE_ARN" \
             --role-session-name debug-session \
-            --web-identity-token "$TOKEN" \
-            --debug
+            --web-identity-token "$IDTOKEN" \
+            --query 'AssumedRoleUser.Arn' \
+            --output text
+          echo "::endgroup::"
 
-      # ---------- Login to AWS ----------
+      # ---------- Credenciales AWS vía OIDC ----------
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
           aws-region: ${{ env.AWS_REGION }}
 
-      # ---------- Setup Buildx + QEMU ----------
+      # ---------- Buildx + QEMU ----------
       - uses: docker/setup-qemu-action@v3
       - uses: docker/setup-buildx-action@v3
 
@@ -64,7 +69,7 @@ jobs:
           registry: ${{ env.ECR_URI }}
           ecr: true
 
-      # ---------- Buildx + cache ----------
+      # ---------- Build & push ----------
       - uses: docker/build-push-action@v5
         with:
           context: .
@@ -85,14 +90,16 @@ jobs:
       id-token: write
       contents: read
 
+    env:
+      PUBLIC_IP: ${{ secrets.STATIC_IP }}
+
     steps:
-      - name: Configure AWS credentials via OIDC
+      - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
           aws-region: ${{ env.AWS_REGION }}
 
-      # ContentReference[oaicite:2]{index=2}
       - name: Pull & restart container via SSM
         uses: peterkimzz/aws-ssm-send-command@v1.1.1
         with:
@@ -103,19 +110,17 @@ jobs:
           command: |
             aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_URI
             docker pull $ECR_URI:latest
-            docker stop landing_tuvotodecide || true
-            docker rm landing_tuvotodecide || true
-            docker run -d --name landing_tuvotodecide -p 4000:8080 --restart unless-stopped $ECR_URI:latest
+            docker stop $CONTAINER_NAME || true
+            docker rm   $CONTAINER_NAME || true
+            docker run -d --name $CONTAINER_NAME -p $EXTERNAL_PORT:8080 --restart unless-stopped $ECR_URI:latest
             docker image prune -f || true
 
       - name: Wait for health‑check
         run: |
           for i in {1..12}; do
-            if curl -fs http://$PUBLIC_IP:4000/health; then
+            if curl -fs http://$PUBLIC_IP:$EXTERNAL_PORT/health; then
               echo "✅ Running"; exit 0
             fi
-            echo "retry $i..."; sleep 5
+            echo "retry $i/12…"; sleep 5
           done
           echo "❌ Health‑check failed" && exit 1
-        env:
-          PUBLIC_IP: ${{ secrets.STATIC_IP }}
