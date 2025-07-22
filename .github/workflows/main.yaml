@@ -19,7 +19,7 @@ env:
   IMAGE_TAG: ${{ github.sha }}
   BUILD_PLATFORMS: linux/arm64,linux/amd64
   CONTAINER_NAME: landing_tuvotodecide
-  EXTERNAL_PORT: 4000 # puerto público ↔ 8080 interno
+  EXTERNAL_PORT: 4000
 
 # 1) BUILD & PUSH  ###
 jobs:
@@ -32,26 +32,35 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - name: Install jq (debug only)
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y jq
 
-      ####### (OPTIONAL) Debug   #######
       - name: Debug OIDC token
         env:
           ROLE_ARN: ${{ secrets.ROLE_TO_ASSUME }}
         run: |
           echo "::group::OIDC env"
-          echo "URL  = $ACTIONS_ID_TOKEN_REQUEST_URL"
-          echo "TOKEN= ${ACTIONS_ID_TOKEN_REQUEST_TOKEN:0:50}..."
+          echo "URL=$ACTIONS_ID_TOKEN_REQUEST_URL"
           echo "::endgroup::"
-          # Pedimos el JWT
-          IDTOKEN=$(curl -sH "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+
+          RAW_JSON=$(curl -sH "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
             "$ACTIONS_ID_TOKEN_REQUEST_URL")
-          echo "::group::STS assume‑role‑with‑web‑identity"
+
+          echo "::group::RAW JSON"
+          echo "$RAW_JSON"
+          echo "::endgroup::"
+
+          IDTOKEN=$(echo "$RAW_JSON" | jq -r '.value')   # <‑‑ extraemos 'value'
+          echo "TOKEN (trunc): ${IDTOKEN:0:50}..."
+
+          echo "::group::Assume role test"
           aws sts assume-role-with-web-identity \
             --role-arn "$ROLE_ARN" \
             --role-session-name debug-session \
             --web-identity-token "$IDTOKEN" \
-            --query 'AssumedRoleUser.Arn' \
-            --output text
+            --query 'AssumedRoleUser.Arn' --output text
           echo "::endgroup::"
 
       - uses: aws-actions/configure-aws-credentials@v4
