@@ -20,9 +20,7 @@ env:
   CONTAINER_NAME: landing_tuvotodecide
   EXTERNAL_PORT: 4000 # puerto público ↔ 8080 interno
 
-###############################################################################
 # 1) BUILD & PUSH                                                           ###
-###############################################################################
 jobs:
   build:
     environment: devops_aws # opcional: nombre del Environment de GH
