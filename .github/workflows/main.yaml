@@ -53,7 +53,9 @@ jobs:
           echo "::endgroup::"
 
           IDTOKEN=$(echo "$RAW_JSON" | jq -r '.value')   # <‑‑ extraemos 'value'
-          echo "TOKEN (trunc): ${IDTOKEN:0:50}..."
+          echo "::group::JWT claims"
+          echo "$IDTOKEN" | cut -d'.' -f2 | base64 -d | jq .
+          echo "::endgroup::"
 
           echo "::group::Assume role test"
           aws sts assume-role-with-web-identity \
