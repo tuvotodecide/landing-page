@@ -9,9 +9,9 @@ mod health;
 const LANGS: &[&str] = &["es", "en"];
 
 fn valid_lang(ctx: &GuardContext) -> bool {
-    // Construimos la ruta completa como string
+    // build a complete uri as string
     let path = ctx.head().uri.to_string();
-    // El split por '/' da ["", "es", "about", ...]; el índice 1 es el lang
+    // Split by '/' da ["", "es", "about", ...]; index 1 is lang
     if let Some(code) = path.split('/').nth(1) {
         LANGS.contains(&code)
     } else {
@@ -20,7 +20,7 @@ fn valid_lang(ctx: &GuardContext) -> bool {
 }
 
 pub fn init(cfg: &mut web::ServiceConfig) {
-    // Redirección raíz "/" según Accept‑Language (abajo)
+    // Root redirection "/" according Accept‑Language 
     cfg.route("/", web::get().to(index::root_redirect));
 
     // scope /{lang}/...
