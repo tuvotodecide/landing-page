@@ -1,0 +1,132 @@
+name: CI‑CD
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - Dockerfile
+      - Cargo.toml
+      - Cargo.lock
+      - src/**
+      - templates/**
+      - static/**
+      - i18n/**
+
+env:
+  AWS_REGION: ${{ vars.AWS_REGION }}
+  ECR_URI: ${{ vars.ECR_URI }}
+  IMAGE_TAG: ${{ github.sha }}
+  BUILD_PLATFORMS: linux/arm64,linux/amd64
+  CONTAINER_NAME: landing_tuvotodecide
+  EXTERNAL_PORT: 4000 # puerto público ↔ 8080 interno
+
+###############################################################################
+# 1) BUILD & PUSH                                                           ###
+###############################################################################
+jobs:
+  build:
+    environment: devops_aws # opcional: nombre del Environment de GH
+    runs-on: ubuntu-22.04
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      #########################################################################
+      # (OPCIONAL) Paso de depuración OIDC – descomenta cuando lo necesites   #
+      #########################################################################
+      - name: Debug OIDC token
+        env:
+          ROLE_ARN: ${{ secrets.ROLE_TO_ASSUME }}
+        run: |
+          echo "::group::OIDC env"
+          echo "URL  = $ACTIONS_ID_TOKEN_REQUEST_URL"
+          echo "TOKEN= ${ACTIONS_ID_TOKEN_REQUEST_TOKEN:0:50}..."
+          echo "::endgroup::"
+          # Pedimos el JWT
+          IDTOKEN=$(curl -sH "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL")
+          echo "::group::STS assume‑role‑with‑web‑identity"
+          aws sts assume-role-with-web-identity \
+            --role-arn "$ROLE_ARN" \
+            --role-session-name debug-session \
+            --web-identity-token "$IDTOKEN" \
+            --query 'AssumedRoleUser.Arn' \
+            --output text
+          echo "::endgroup::"
+
+      # ---------- Credenciales AWS vía OIDC ----------
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      # ---------- Buildx + QEMU ----------
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+
+      # ---------- Login en ECR ----------
+      - uses: docker/login-action@v3
+        with:
+          registry: ${{ env.ECR_URI }}
+          ecr: true
+
+      # ---------- Build & push ----------
+      - uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          provenance: false
+          cache-from: type=registry,ref=${{ env.ECR_URI }}:buildcache
+          cache-to: type=registry,ref=${{ env.ECR_URI }}:buildcache,mode=max
+          platforms: ${{ env.BUILD_PLATFORMS }}
+          tags: |
+            ${{ env.ECR_URI }}:${{ env.IMAGE_TAG }}
+            ${{ env.ECR_URI }}:latest
+
+  ###############################################################################
+  # 2) DEPLOY                                                                 ###
+  ###############################################################################
+  deploy:
+    needs: build
+    runs-on: ubuntu-22.04
+    permissions:
+      id-token: write
+      contents: read
+
+    env:
+      PUBLIC_IP: ${{ secrets.STATIC_IP }}
+
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Pull & restart container via SSM
+        uses: peterkimzz/aws-ssm-send-command@v1.1.1
+        with:
+          region: ${{ env.AWS_REGION }}
+          instance_ids: ${{ secrets.EC2_INSTANCE_ID }}
+          comment: "Deploy landing_tvd image"
+          working_directory: "/home/ubuntu"
+          command: |
+            aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_URI
+            docker pull $ECR_URI:latest
+            docker stop $CONTAINER_NAME || true
+            docker rm   $CONTAINER_NAME || true
+            docker run -d --name $CONTAINER_NAME -p $EXTERNAL_PORT:8080 --restart unless-stopped $ECR_URI:latest
+            docker image prune -f || true
+
+      - name: Wait for health‑check
+        run: |
+          for i in {1..12}; do
+            if curl -fs http://$PUBLIC_IP:$EXTERNAL_PORT/health; then
+              echo "✅ Running"; exit 0
+            fi
+            echo "retry $i/12…"; sleep 5
+          done
+          echo "❌ Health‑check failed" && exit 1
