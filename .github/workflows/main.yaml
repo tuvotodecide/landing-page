@@ -74,7 +74,7 @@ jobs:
       ECR_REGISTRY: ${{ vars.ECR_REGISTRY }}
       ECR_REPO: ${{ vars.ECR_REPOSITORY }}
       EC2_INSTANCE_ID: ${{ secrets.EC2_INSTANCE_ID }}
-      PUBLIC_IP: ${{ secrets.PUBLIC_IP }}
+      PUBLIC_IP: ${{ vars.PUBLIC_IP }}
       EXTERNAL_PORT: ${{ vars.EXTERNAL_PORT }}
       CONTAINER_NAME: landing-tvd
 
@@ -146,7 +146,7 @@ jobs:
       - name: Health check loop
         run: |
           for i in {1..12}; do
-            if curl -fs "http://${PUBLIC_IP}:${EXTERNAL_PORT:-3000}/health"; then
+            if curl -fs "http://${PUBLIC_IP}:${EXTERNAL_PORT:-3000}/en/health"; then
               echo "✅ Service healthy"; exit 0
             fi
             echo "⏳ waiting ($i/12)…"; sleep 5
