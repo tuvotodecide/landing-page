@@ -90,28 +90,29 @@ jobs:
         run: |
           set -euo pipefail
 
-          send_cmd() {
-            aws ssm send-command \
-              --instance-ids "$EC2_INSTANCE_ID" \
-              --document-name "AWS-RunShellScript" \
-              --comment "GitHub Actions deploy" \
-              --parameters "commands=$1" \
-              --output text --query "Command.CommandId"
-          }
+          CMDS='[
+            "aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REGISTRY",
+            "docker pull $ECR_REGISTRY/$ECR_REPO:latest",
+            "docker stop $CONTAINER_NAME || true",
+            "docker rm   $CONTAINER_NAME || true",
+            "docker run -d --name $CONTAINER_NAME -p ${EXTERNAL_PORT:-3000}:8080 --restart unless-stopped $ECR_REGISTRY/$ECR_REPO:latest",
+            "docker image prune -f"
+          ]'
 
-          CMDS_JSON=$(cat <<JSON
-            [
-              "aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ECR_REGISTRY}",
-              "docker pull ${ECR_REGISTRY}/${ECR_REPO}:latest",
-              "docker stop ${CONTAINER_NAME} || true",
-              "docker rm   ${CONTAINER_NAME} || true",
-              "docker run -d --name ${CONTAINER_NAME} -p ${EXTERNAL_PORT:-3000}:8080 --restart unless-stopped ${ECR_REGISTRY}/${ECR_REPO}:latest",
-              "docker image prune -f"
-            ]
-            JSON
-          )
+          CMD_ID=$(aws ssm send-command \
+            --instance-ids "$EC2_INSTANCE_ID" \
+            --document-name "AWS-RunShellScript" \
+            --comment "GitHub Actions deploy" \
+            --parameters "commands=$CMDS" \
+            --query "Command.CommandId" --output text)
 
-          CMD_ID=$(send_cmd "$CMDS_JSON")
-          aws ssm wait command-executed --command-id "$CMD_ID" --instance-id "$EC2_INSTANCE_ID"
-          STATUS=$(aws ssm get-command-invocation --command-id "$CMD_ID" --instance-id "$EC2_INSTANCE_ID" --query Status --output text)
-          [ "$STATUS" != "Success" ] && { echo "❌ SSM remote commands failed"; exit 1; }
+          aws ssm wait command-executed \
+            --command-id "$CMD_ID" --instance-id "$EC2_INSTANCE_ID"
+
+          STATUS=$(aws ssm get-command-invocation \
+            --command-id "$CMD_ID" --instance-id "$EC2_INSTANCE_ID" \
+            --query Status --output text)
+
+          if [ "$STATUS" != "Success" ]; then
+            echo "❌ SSM remote commands failed"; exit 1
+          fi
