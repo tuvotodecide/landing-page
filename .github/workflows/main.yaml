@@ -97,7 +97,7 @@ jobs:
           CMDS=$(jq -nc --arg reg "$ECR_REGISTRY" \
                         --arg repo "$ECR_REPO" \
                         --arg region "$AWS_REGION" \
-                        --arg port  "${EXTERNAL_PORT:-3000}" \
+                        --arg port  "${EXTERNAL_PORT}" \
                         --arg name  "$CONTAINER_NAME" \
             '
             [
@@ -144,14 +144,25 @@ jobs:
           | xargs -I{} aws ssm wait command-executed --command-id {} --instance-id "$EC2_INSTANCE_ID"
 
       - name: Health check loop
+        shell: bash
         run: |
-          for i in {1..12}; do
-            if curl -fs "http://${PUBLIC_IP}:${EXTERNAL_PORT:-3000}/en/health"; then
-              echo "✅ Service healthy"; exit 0
+          set -euo pipefail
+          stdbuf -oL -eL echo "🔎 Comprobando http://${PUBLIC_IP}:${EXTERNAL_PORT:-3000}/en/health"
+
+          for i in {1..24}; do          # = 2 minutos máx.
+            http_code=$(curl -s -o /dev/null -w '%{http_code}' \
+                          --max-time 5 \
+                          "http://${PUBLIC_IP}:${EXTERNAL_PORT:-3000}/en/health") || true
+
+            if [[ "$http_code" == "200" ]]; then
+              echo "✅ Servicio OK (${http_code})"; exit 0
             fi
-            echo "⏳ waiting ($i/12)…"; sleep 5
+
+            echo "⏳ intento $i/24 — code=${http_code:-timeout}"
+            sleep 5
           done
-          echo "❌ Health‑check failed, dumping logs"
+
+          echo "❌ Health‑check failed, dumping container logs"
           aws ssm send-command \
             --instance-ids "$EC2_INSTANCE_ID" \
             --document-name "AWS-RunShellScript" \
