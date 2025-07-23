@@ -147,12 +147,12 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          stdbuf -oL -eL echo "🔎 Comprobando http://${PUBLIC_IP}:${EXTERNAL_PORT:-3000}/en/health"
+          stdbuf -oL -eL echo "🔎 Comprobando http://${PUBLIC_IP}:${EXTERNAL_PORT}/en/health"
 
           for i in {1..24}; do          # = 2 minutos máx.
             http_code=$(curl -s -o /dev/null -w '%{http_code}' \
                           --max-time 5 \
-                          "http://${PUBLIC_IP}:${EXTERNAL_PORT:-3000}/en/health") || true
+                          "http://${PUBLIC_IP}:${EXTERNAL_PORT}/en/health") || true
 
             if [[ "$http_code" == "200" ]]; then
               echo "✅ Servicio OK (${http_code})"; exit 0
