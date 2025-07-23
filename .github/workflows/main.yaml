@@ -100,15 +100,15 @@ jobs:
           }
 
           CMDS_JSON=$(cat <<JSON
-[
-  "aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ECR_REGISTRY}",
-  "docker pull ${ECR_REGISTRY}/${ECR_REPO}:latest",
-  "docker stop ${CONTAINER_NAME} || true",
-  "docker rm   ${CONTAINER_NAME} || true",
-  "docker run -d --name ${CONTAINER_NAME} -p ${EXTERNAL_PORT:-3000}:8080 --restart unless-stopped ${ECR_REGISTRY}/${ECR_REPO}:latest",
-  "docker image prune -f"
-]
-JSON
+            [
+              "aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ECR_REGISTRY}",
+              "docker pull ${ECR_REGISTRY}/${ECR_REPO}:latest",
+              "docker stop ${CONTAINER_NAME} || true",
+              "docker rm   ${CONTAINER_NAME} || true",
+              "docker run -d --name ${CONTAINER_NAME} -p ${EXTERNAL_PORT:-3000}:8080 --restart unless-stopped ${ECR_REGISTRY}/${ECR_REPO}:latest",
+              "docker image prune -f"
+            ]
+            JSON
           )
 
           CMD_ID=$(send_cmd "$CMDS_JSON")
