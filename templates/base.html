@@ -100,7 +100,9 @@
       {% block content %}{% endblock %}
 
       <!-- footer -->
-      {% include "components/common/footer.html" %}
+       {% if show_footer %} {% include "components/common/footer.html" %} {%
+      endif %}
+      
     </div>
 
     <!-- JS common -->

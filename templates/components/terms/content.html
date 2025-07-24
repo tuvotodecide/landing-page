@@ -1,0 +1,21 @@
+<article>
+  <header>
+    <h1>{{t.page_title}}</h1>
+    <p><strong>{{ t.terms_conditions.last_updated }}</strong></p>
+  </header>
+
+  {% for section in t.terms_conditions.sections %}
+  <section>
+    <h2>{{ section.title }}</h2>
+    {% for content in section.content %} {% if content is string %}
+    <p>{{ content }}</p>
+    {% else %}
+    <ul>
+      {% for item in content.list %}
+      <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endfor %}
+  </section>
+  {% endfor %}
+</article>

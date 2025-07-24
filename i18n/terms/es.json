@@ -1,0 +1,102 @@
+{
+  "page_title": "Términos y Condiciones - Tu Voto Decide",
+  "meta_description": "Estos Términos y Condiciones regulan el uso de la aplicación móvil \"Tu Voto Decide\", desarrollada y gestionada por Consultora Blockchain S.R.L.",
+  "main_image": "http://tuvotodecide.com/static/images/header/main_image.png",
+  "terms_conditions": {
+    "last_updated": "Última actualización: Julio de 2025",
+    "sections": [
+      {
+        "title": "1. Introducción",
+        "content": [
+          "Estos Términos y Condiciones (en adelante, “T&C”) regulan el uso de la aplicación móvil \"Tu Voto Decide\", desarrollada y gestionada por Consultora Blockchain S.R.L. Al descargar, instalar o usar la aplicación, el usuario acepta expresamente los presentes T&C."
+        ]
+      },
+      {
+        "title": "2. Objeto",
+        "content": [
+          "\"Tu Voto Decide\" es una aplicación descentralizada diseñada exclusivamente para facilitar el control electoral mediante tecnologías basadas en Account Abstraction (ERC-4337), operando sin custodia de fondos, claves o datos por parte del proveedor. Integra la tecnología de Wira Wallet para la emisión de identidades digitales soberanas y el uso de oráculos humanos para verificaciones colectivas y transparentes. Permite:",
+          {
+            "list": [
+              "Emitir y gestionar credenciales descentralizadas (VC) vinculadas a una identidad soberana para participar en procesos de monitoreo electoral.",
+              "Realizar verificaciones y reportes electorales on-chain sin necesidad de manejar directamente las comisiones de gas, asegurando transparencia y anonimato.",
+              "Ejecutar interacciones entre diferentes redes blockchain (Network Abstraction) para registrar observaciones electorales de manera inmutable.",
+              "Configurar y gestionar mecanismos de recuperación de cuenta mediante guardianes on-chain, adaptados para mantener la integridad en contextos electorales.",
+              "Utilizar oráculos humanos (usuarios verificados descentralizados) para validar datos electorales de forma colectiva, sin revelar información personal."
+            ]
+          },
+          "El objetivo principal es promover la transparencia y el control ciudadano en procesos electorales, asegurando que todas las operaciones se realicen de manera soberana y verificable."
+        ]
+      },
+      {
+        "title": "3. Licencia de Uso",
+        "content": [
+          "Consultora Blockchain S.R.L. otorga al usuario una licencia limitada, revocable, no exclusiva e intransferible para instalar y utilizar \"Tu Voto Decide\" en un dispositivo personal. Está prohibido copiar, modificar, distribuir, descompilar o utilizar la aplicación para fines distintos al control electoral descrito."
+        ]
+      },
+      {
+        "title": "4. Registro y Seguridad",
+        "content": [
+          "Para utilizar la app, el usuario debe registrar su identidad soberana mediante la captura de fotografías del DNI y una selfie, procesadas localmente para verificación biométrica. Posteriormente, configura un PIN personal y puede habilitar autenticación biométrica. El PIN, las claves privadas y cualquier dato electoral no son almacenados por el backend ni pueden ser recuperados por la empresa, garantizando la soberanía del usuario en el contexto electoral."
+        ]
+      },
+      {
+        "title": "5. Almacenamiento y Custodia",
+        "content": [
+          "Credenciales, claves y datos relacionados con verificaciones electorales son almacenados de manera cifrada en el dispositivo del usuario. \"Tu Voto Decide\" no opera como un servicio de custodia, lo que significa que ni Consultora Blockchain S.R.L. ni ningún tercero puede acceder a sus activos, datos personales ni realizar transacciones o verificaciones en su nombre. Los oráculos humanos solo interactúan con datos anonimizados y hashes en la blockchain."
+        ]
+      },
+      {
+        "title": "6. Transacciones y Gas Abstraction",
+        "content": [
+          "Las verificaciones y reportes electorales generados por el usuario se procesan a través de un sistema de relayers y EntryPoint siguiendo el estándar ERC-4337, que permite la abstracción del gas. El usuario solo debe aprobar la operación desde su dispositivo, y el gas se descuenta automáticamente del saldo de la cuenta inteligente, facilitando la participación en control electoral sin barreras técnicas."
+        ]
+      },
+      {
+        "title": "7. Recuperación de Cuenta y Guardianes",
+        "content": [
+          "El usuario puede definir guardianes on-chain que servirán como respaldo en caso de pérdida del PIN, asegurando continuidad en la participación electoral. El mecanismo de recuperación se basa en contratos inteligentes y requiere la aprobación mínima configurada por el usuario.",
+          "Exención de responsabilidad: La empresa no se hace responsable por la pérdida de acceso debido a una mala gestión o selección de guardianes por parte del usuario, ni por cualquier impacto en la capacidad de realizar control electoral."
+        ]
+      },
+      {
+        "title": "8. Responsabilidad y Exención",
+        "content": [
+          "La aplicación se ofrece \"tal cual\", sin garantías de disponibilidad continua o ausencia de errores. Consultora Blockchain S.R.L. no será responsable por pérdidas derivadas del uso indebido de la App, caídas de red, ataques a la blockchain, manipulaciones electorales externas, ni fluctuaciones en las redes descentralizadas. La App no ofrece asesoramiento electoral, legal o financiero, y el usuario asume plena responsabilidad por sus verificaciones y reportes.",
+          "Adicionalmente, la empresa no garantiza la exactitud de las validaciones realizadas mediante oráculos humanos, ya que dependen de la participación colectiva descentralizada."
+        ]
+      },
+      {
+        "title": "9. Privacidad",
+        "content": [
+          "\"Tu Voto Decide\" recolecta y utiliza datos exclusivamente para los fines detallados en la Política de Privacidad, alineados con el control electoral. No se realiza análisis de contenido sensible, y toda la información se mantiene cifrada, incluyendo credenciales, documentos, pruebas biométricas y datos de verificaciones electorales."
+        ]
+      },
+      {
+        "title": "10. Legislación Aplicable",
+        "content": [
+          "Estos Términos se rigen por la legislación boliviana, incluyendo:",
+          {
+            "list": [
+              "Ley N° 1082 sobre Ciudadanía Digital.",
+              "Ley N° 164 de Telecomunicaciones y TIC (Art. 54 y 78).",
+              "Decreto Supremo N° 3525 sobre Firma Digital."
+            ]
+          },
+          "Cualquier conflicto será resuelto por los tribunales de la ciudad de La Paz."
+        ]
+      },
+      {
+        "title": "11. Cambios",
+        "content": [
+          "Podremos modificar estos T&C cuando sea necesario, por ejemplo, para adaptarse a cambios regulatorios electorales o tecnológicos. El uso continuado de la App después de la publicación de cambios implica aceptación por parte del usuario. Se notificará de modificaciones significativas a través de la aplicación."
+        ]
+      },
+      {
+        "title": "12. Contacto",
+        "content": [
+          "Para consultas relacionadas a los presentes términos o privacidad, comuníquese a: info@blockchainconsultora.com"
+        ]
+      }
+    ]
+  }
+}

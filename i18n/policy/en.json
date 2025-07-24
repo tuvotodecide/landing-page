@@ -1,0 +1,138 @@
+{
+  "page_title": "Privacy Policy - Tu Voto Decide",
+  "meta_description": "This Privacy Policy explains how Consultora Blockchain S.R.L., located in the city of La Paz, Bolivia, in its role as Data Controller, collects, uses, protects, and retains the personal data of users who use the \"Tu Voto Decide\" application.",
+  "main_image": "http://tuvotodecide.com/static/images/header/main_image.png",
+  "privacy_policy": {
+    "last_updated": "Last updated: July 2025",
+    "intro": {
+      "paragraphs": [
+        "This Privacy Policy explains how Consultora Blockchain S.R.L., located in the city of La Paz, Bolivia, in its role as Data Controller, collects, uses, protects, and retains the personal data of users who use the \"Tu Voto Decide\" application.",
+        "\"Tu Voto Decide\" is an application designed exclusively to facilitate electoral oversight through decentralized technologies, incorporating Wira Wallet technology for the creation of sovereign digital identities and the use of human oracles for secure and transparent verifications.",
+        "The application operates in a non-custodial manner, where all private keys, credentials, and documents are generated, encrypted, and stored directly on the user's device. Neither Consultora Blockchain nor third parties have technical access to this data after installation."
+      ]
+    },
+    "compliance": {
+      "section_title": "Regulatory Compliance",
+      "intro": "This policy is issued in compliance with current legislation in the Plurinational State of Bolivia, including:",
+      "laws": [
+        "Law No. 1082 on Digital Citizenship",
+        "Law No. 164 on Telecommunications and Information and Communication Technologies",
+        "Supreme Decree No. 3525 on Digital Signature"
+      ],
+      "additional": "Additionally, this policy aligns with the principles of privacy by design and data sovereignty, ensuring that electoral oversight is conducted in an anonymous and verifiable manner without compromising individual privacy."
+    },
+    "sections": [
+      {
+        "title": "1. Personal Data Collected",
+        "content": [
+          "\"Tu Voto Decide\" collects only the essential information to create a sovereign digital identity, enable electoral oversight, and operate with human oracles, integrating Wira Wallet technology:",
+          {
+            "list": [
+              "ID Card (number and front/back photos): Captured with the device's camera, processed by local OCR, and verified through Polygon ID; the file is encrypted (AES-256-GCM) and stored in the device's Keystore.",
+              "Selfie: Captured with the camera; 1-to-1 biometric comparison is performed locally on the device; the image is encrypted and not stored in an accessible manner.",
+              "Decentralized Identifier (DID): Generated on the phone, signed with the local key; only its hash is published on the blockchain.",
+              "Sovereign Credential (VC): Issued with Polygon ID after validating ID + selfie; encrypted with a key derived from the user's PIN (Argon2) and stored on Ceramic. Its validity is demonstrated through zero-knowledge proofs (zk-SNARK).",
+              "Electoral oversight-related data: Includes anonymous hashes of electoral observations or verifications performed through human oracles (verified users acting as decentralized validators).",
+              "On-chain addresses and transaction hashes: Generated when signing electoral oversight operations; public but pseudonymized."
+            ]
+          },
+          "Important: Consultora Blockchain cannot decrypt credentials or access user documents, as they remain locally encrypted or validated through zero-knowledge proofs."
+        ]
+      },
+      {
+        "title": "2. Purposes of Processing",
+        "content": [
+          "Personal data is used exclusively for:",
+          {
+            "list": [
+              "Verifying the user's identity (ID + selfie) and issuing their sovereign credential (VC) to participate in electoral oversight.",
+              "Enabling the use of the application for electoral monitoring and verification.",
+              "Operating a non-custodial wallet through Account Abstraction.",
+              "Allowing local login via PIN or biometrics.",
+              "Implementing on-chain recovery mechanisms with guardians.",
+              "Collecting anonymous technical metrics to improve security."
+            ]
+          },
+          "All operations are carried out with the objective of promoting electoral transparency without compromising privacy."
+        ]
+      },
+      {
+        "title": "3. Legal Basis",
+        "content": [
+          "Data processing is based on:",
+          {
+            "list": [
+              "User's express consent (Art. 21 of the CPE and Law 1082).",
+              "Execution of a digital contract for the use of the application (Art. 78 of Law 164).",
+              "Advanced electronic signature, in accordance with SD No. 3525."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "4. Data Recipients",
+        "content": [
+          "Personal data will not be sold, transferred, or shared with unauthorized third parties. The only exceptions include:",
+          {
+            "list": [
+              "Decentralized technical providers (such as Ceramic nodes, RPC services, or blockchain networks).",
+              "Participating human oracles: Access only anonymized data.",
+              "Judicial, electoral, or administrative authorities, only under duly issued legal request."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "5. Data Retention and Storage",
+        "content": [
+          "All sensitive data is locally encrypted using robust algorithms (AES-256-GCM):",
+          {
+            "list": [
+              "Credentials are stored encrypted on the Ceramic network.",
+              "Electoral oversight data is recorded on the blockchain in pseudonymized form.",
+              "Data deletion must be performed by the user themselves."
+            ]
+          },
+          "Data is retained while the user keeps the application active."
+        ]
+      },
+      {
+        "title": "6. User Rights",
+        "content": [
+          "The user may exercise the following rights at any time:",
+          {
+            "list": [
+              "Access to their encrypted personal data.",
+              "Request correction of detected errors.",
+              "Execute portability of their credentials.",
+              "Object to processing or revoke consent.",
+              "Data deletion, subject to electoral legal obligations."
+            ]
+          },
+          "These rights can only be exercised through the functions enabled in the application."
+        ]
+      },
+      {
+        "title": "7. Information Security",
+        "content": [
+          "We implement multiple security layers:",
+          {
+            "list": [
+              "End-to-end encryption of all sensitive data.",
+              "Local storage of sensitive data (Android Keystore).",
+              "Smart contracts and zero-knowledge proofs (zk-SNARK).",
+              "Enhanced authentication via PIN, biometrics, and decentralized validations.",
+              "Continuous threat monitoring."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "8. Modifications",
+        "content": [
+          "This Policy may be updated to reflect regulatory, technological changes, or changes in the Bolivian electoral framework. We will notify such changes through the application and update the date at the beginning of this document."
+        ]
+      }
+    ]
+  }
+}

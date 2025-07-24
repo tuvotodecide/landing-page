@@ -1,0 +1,40 @@
+<article>
+  <header>
+    <h1>{{ t.page_title}}</h1>
+    <p>
+      <strong> {{ t.privacy_policy.last_updated }}</strong>
+    </p>
+  </header>
+
+  <section>
+    {% for paragraph in t.privacy_policy.intro.paragraphs %}
+    <p>{{ paragraph }}</p>
+    {% endfor %}
+  </section>
+
+  <section>
+    <h2>{{ t.privacy_policy.compliance.section_title }}</h2>
+    <p>{{ t.privacy_policy.compliance.intro }}</p>
+    <ul>
+      {% for law in t.privacy_policy.compliance.laws %}
+      <li>{{ law }}</li>
+      {% endfor %}
+    </ul>
+    <p>{{ t.privacy_policy.compliance.additional }}</p>
+  </section>
+
+  {% for section in t.privacy_policy.sections %}
+  <section>
+    <h2>{{ section.title }}</h2>
+    {% for content in section.content %} {% if content is string %}
+    <p>{{ content }}</p>
+    {% else %}
+    <ul>
+      {% for item in content.list %}
+      <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endfor %}
+  </section>
+  {% endfor %}
+</article>

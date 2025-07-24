@@ -11439,7 +11439,7 @@ hr + .nk-block {
   padding-bottom: 40px;
 }
 .partner {
-  height: 31px;
+  height: auto;
   width: auto;
 }
 

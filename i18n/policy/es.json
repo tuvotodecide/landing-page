@@ -1,0 +1,138 @@
+{
+  "page_title": "Política de Privacidad - Tu Voto Decide",
+  "meta_description": "Esta Política de Privacidad explica cómo Consultora Blockchain S.R.L., con domicilio en la ciudad de La Paz, Bolivia, en su rol de Responsable del Tratamiento, recopila, utiliza, protege y conserva los datos personales de los usuarios que utilizan la aplicación \"Tu Voto Decide\".",
+  "main_image": "http://tuvotodecide.com/static/images/header/main_image.png",
+  "privacy_policy": {
+    "last_updated": "Última actualización: Julio de 2025",
+    "intro": {
+      "paragraphs": [
+        "Esta Política de Privacidad explica cómo Consultora Blockchain S.R.L., con domicilio en la ciudad de La Paz, Bolivia, en su rol de Responsable del Tratamiento, recopila, utiliza, protege y conserva los datos personales de los usuarios que utilizan la aplicación \"Tu Voto Decide\".",
+        "\"Tu Voto Decide\" es una aplicación diseñada exclusivamente para facilitar el control electoral mediante tecnologías descentralizadas, incorporando la tecnología de Wira Wallet para la creación de identidades digitales soberanas y el uso de oráculos humanos para verificaciones seguras y transparentes.",
+        "La aplicación opera de forma no custodial, donde todas las claves privadas, credenciales y documentos se generan, cifran y almacenan directamente en el dispositivo del usuario. Ni Consultora Blockchain ni terceros poseen acceso técnico a estos datos tras la instalación."
+      ]
+    },
+    "compliance": {
+      "section_title": "Cumplimiento Normativo",
+      "intro": "La presente política se emite en cumplimiento de la legislación vigente en el Estado Plurinacional de Bolivia, incluyendo:",
+      "laws": [
+        "Ley N.º 1082 de Ciudadanía Digital",
+        "Ley N.º 164 de Telecomunicaciones y Tecnologías de la Información y Comunicación",
+        "Decreto Supremo N.º 3525 sobre Firma Digital"
+      ],
+      "additional": "Adicionalmente, esta política se alinea con los principios de privacidad por diseño y soberanía de datos, asegurando que el control electoral se realice de manera anónima y verificable sin comprometer la privacidad individual."
+    },
+    "sections": [
+      {
+        "title": "1. Datos Personales Recopilados",
+        "content": [
+          "\"Tu Voto Decide\" recopila solo la información imprescindible para crear una identidad digital soberana, habilitar el control electoral y operar con oráculos humanos, integrando la tecnología de Wira Wallet:",
+          {
+            "list": [
+              "DNI (número y fotos anverso/reverso): Capturados con la cámara del dispositivo, procesados por un OCR local y verificados mediante Polygon ID; el archivo se cifra (AES-256-GCM) y se almacena en el Keystore del dispositivo.",
+              "Selfie: Capturada con la cámara; la comparación biométrica 1-a-1 se realiza localmente en el dispositivo; la imagen se cifra y no se guarda de forma accesible.",
+              "Identificador Descentralizado (DID): Generado en el teléfono, firmado con la clave local; solo su hash se publica en la blockchain.",
+              "Credencial Soberana (VC): Emitida con Polygon ID tras validar DNI + selfie; se cifra con una clave derivada de su PIN (Argon2) y se guarda en Ceramic. Su validez se demuestra mediante pruebas de conocimiento cero (zk-SNARK).",
+              "Datos relacionados con el control electoral: Incluye hashes anónimos de observaciones electorales o verificaciones realizadas mediante oráculos humanos.",
+              "Direcciones on-chain y hashes de transacciones: Generados al firmar operaciones de control electoral; son públicos pero pseudonimizados."
+            ]
+          },
+          "Importante: Consultora Blockchain no puede descifrar las credenciales ni acceder a los documentos del usuario, ya que permanecen cifrados localmente o validados mediante pruebas zero-knowledge."
+        ]
+      },
+      {
+        "title": "2. Finalidades del Tratamiento",
+        "content": [
+          "Los datos personales se utilizan exclusivamente para:",
+          {
+            "list": [
+              "Verificar la identidad del usuario y emitir su credencial soberana (VC) para participar en el control electoral.",
+              "Habilitar el uso de la aplicación para monitoreo y verificación electoral.",
+              "Operar una billetera no custodial mediante Account Abstraction.",
+              "Permitir el inicio de sesión local mediante PIN o biometría.",
+              "Implementar mecanismos de recuperación on-chain con guardianes.",
+              "Recopilar métricas técnicas anónimas para mejorar la seguridad."
+            ]
+          },
+          "Todas las operaciones se realizan con el objetivo de promover la transparencia electoral sin comprometer la privacidad."
+        ]
+      },
+      {
+        "title": "3. Base Jurídica",
+        "content": [
+          "El tratamiento de datos se basa en:",
+          {
+            "list": [
+              "Consentimiento expreso del usuario (Art. 21 de la CPE y Ley 1082).",
+              "Ejecución de un contrato digital para el uso de la aplicación (Art. 78 de la Ley 164).",
+              "Firma electrónica avanzada, conforme al DS N.º 3525."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "4. Destinatarios de los Datos",
+        "content": [
+          "Los datos personales no serán vendidos, transferidos ni compartidos con terceros no autorizados. Las únicas excepciones incluyen:",
+          {
+            "list": [
+              "Proveedores técnicos descentralizados (como nodos Ceramic, servicios RPC o redes blockchain).",
+              "Oráculos humanos participantes: Acceden solo a datos anonimizados.",
+              "Autoridades judiciales, electorales o administrativas, únicamente ante requerimiento legal."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "5. Conservación y Almacenamiento de Datos",
+        "content": [
+          "Todos los datos sensibles se cifran localmente mediante algoritmos robustos (AES-256-GCM):",
+          {
+            "list": [
+              "Las credenciales se almacenan cifradas en la red Ceramic.",
+              "Los datos de control electoral se registran en blockchain de forma pseudonimizada.",
+              "La eliminación de datos debe ser realizada por el propio usuario."
+            ]
+          },
+          "Los datos se conservan mientras el usuario mantenga la aplicación activa."
+        ]
+      },
+      {
+        "title": "6. Derechos del Usuario",
+        "content": [
+          "El usuario puede ejercer los siguientes derechos:",
+          {
+            "list": [
+              "Acceso a sus datos personales cifrados.",
+              "Solicitar la rectificación de errores.",
+              "Ejecutar la portabilidad de sus credenciales.",
+              "Oposición al tratamiento o revocación del consentimiento.",
+              "Eliminación de datos, sujeto a obligaciones legales."
+            ]
+          },
+          "Estos derechos pueden ser ejercidos únicamente a través de las funciones habilitadas en la aplicación."
+        ]
+      },
+      {
+        "title": "7. Seguridad de la Información",
+        "content": [
+          "Implementamos múltiples capas de seguridad:",
+          {
+            "list": [
+              "Cifrado extremo a extremo de todos los datos sensibles.",
+              "Almacenamiento local de datos sensibles (Android Keystore).",
+              "Contratos inteligentes y pruebas de conocimiento cero (zk-SNARK).",
+              "Autenticación reforzada mediante PIN, biometría y validaciones descentralizadas.",
+              "Monitoreo continuo de amenazas."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "8. Modificaciones",
+        "content": [
+          "Esta Política podrá actualizarse para reflejar cambios regulatorios, tecnológicos o en el marco electoral boliviano. Notificaremos tales cambios a través de la aplicación y actualizaremos la fecha al inicio de este documento."
+        ]
+      }
+    ]
+  }
+}

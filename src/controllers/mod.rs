@@ -5,6 +5,8 @@ mod index;
 mod about;
 mod blog;
 mod health;
+mod policy;
+mod terms;
 
 const LANGS: &[&str] = &["es", "en"];
 
@@ -23,13 +25,14 @@ pub fn init(cfg: &mut web::ServiceConfig) {
     // Root redirection "/" according Accept‑Language 
     cfg.route("/", web::get().to(index::root_redirect));
 
-    // scope /{lang}/...
     cfg.service(
         web::scope("/{lang}")
             .guard(guard::fn_guard(valid_lang))
             .route("/",      web::get().to(index::index))
             .route("/about", web::get().to(about::about))
             .route("/blog",  web::get().to(blog::blog))
+            .route("/policy", web::get().to(policy::policy))
+            .route("/terms",  web::get().to(terms::terms))
             .route("/health", web::get().to(health::health))
     );
 }

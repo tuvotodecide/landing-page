@@ -1,30 +1,16 @@
-use actix_web::{web, HttpRequest, HttpResponse, Result};
-use accept_language::{intersection};
+// src/controllers/about.rs
+use actix_web::{web, HttpResponse, Result, HttpRequest};
 use tera::{Tera, Context};
 use crate::i18n::Translations;
 use actix_web::dev::ConnectionInfo;
 
-const SUPPORTED: &[&str] = &["es", "en"];
-const PAGE: &str = "index";  //name of the language directory
+const PAGE: &str = "terms";      //name of the language directory   
 
-pub async fn root_redirect(req: HttpRequest) -> HttpResponse {
-    let header_val = req
-        .headers()
-        .get(actix_web::http::header::ACCEPT_LANGUAGE)
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("");
-    let common = intersection(header_val, SUPPORTED);
-    let best = common.get(0).map(|s| s.as_str()).unwrap_or("es");                             // default
-    HttpResponse::Found()
-        .append_header((actix_web::http::header::LOCATION, format!("/{}/", best)))
-        .finish()
-}
-
-pub async fn index(
+pub async fn terms(
     tmpl: web::Data<Tera>,
     tr:   web::Data<Translations>,
     req:  HttpRequest,
-    conn: ConnectionInfo,          
+    conn: ConnectionInfo,
 ) -> Result<HttpResponse> {
     let lang = req.match_info().get("lang").unwrap_or("es");
     let (page_json, common_json) = tr.get_pair(PAGE, lang);
@@ -39,8 +25,8 @@ pub async fn index(
     ctx.insert("lang", &lang);
     ctx.insert("canonical_url", &canonical_url);
     ctx.insert("default_url",   &default_url);
-    ctx.insert("show_header", &true);
-    ctx.insert("show_footer", &true);
+    ctx.insert("show_header", &false);
+    ctx.insert("show_footer", &false);
     ctx.insert("c", &common_json);
 
     let mut alt = Vec::new();
@@ -50,7 +36,8 @@ pub async fn index(
     }
     ctx.insert("alt_links", &alt);
 
-    let body = tmpl.render("pages/index.html", &ctx)
+    let body = tmpl
+        .render("pages/terms.html", &ctx)
         .map_err(actix_web::error::ErrorInternalServerError)?;
     Ok(HttpResponse::Ok().content_type("text/html").body(body))
 }
