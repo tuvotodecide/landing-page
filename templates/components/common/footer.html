@@ -128,8 +128,16 @@
             </div>
             <div class="col-lg-5 text-lg-end">
               <ul class="footer-links">
-                <li><a href="#">{{c.footer.privacy}} </a></li>
-                <li><a href="#">{{c.footer.terms}} </a></li>
+                <li>
+                  <a target="_blank" href="/{{lang}}/policy"
+                    >{{c.footer.privacy}}
+                  </a>
+                </li>
+                <li>
+                  <a target="_blank" href="/{{lang}}/terms"
+                    >{{c.footer.terms}}
+                  </a>
+                </li>
                 <li class="language-switcher toggle-wrap">
                   <a class="toggle-tigger" href="#">{{ lang|upper }}</a>
                   <ul
