@@ -113,26 +113,11 @@
     "description": "The electoral control application is an initiative born from Asoblockchain Bolivia, with the team presented here being the executives and main individuals responsible for the application.",
     "members": [
       {
-        "imageColor": "huascar.jpg",
-        "imageBN": "huascarbn.png",
-        "name": "Huáscar ",
-        "lastName": "Miranda M.",
-        "title": "CTO & Lead Blockchain",
-        "x": "https://x.com/Huascarmm",
-        "linkedIn": "https://www.linkedin.com/in/huascarmiranda",
-        "small": "Expert in creation and management of blockchain projects",
-        "large": "With more than 6 years of experience in the technical creation and management of blockchain projects, he is in charge of creating and ensuring the technical quality and security of our application.",
-        "skills": [
-          { "subject": "Blockchain", "level": "90" },
-          { "subject": "Technical team management", "level": "70" }
-        ]
-      },
-      {
         "imageColor": "cecilia.jpg",
         "imageBN": "ceciliabn.png",
         "name": "Cecilia ",
         "lastName": "Contreras",
-        "title": "COO ",
+        "title": "CEO",
         "x": "https://x.com/Ceci_Sakura007",
         "linkedIn": "https://x.com/Ceci_Sakura007",
         "small": "Expert in operations, institutional relations both national and international",
@@ -143,11 +128,27 @@
         ]
       },
       {
+        "imageColor": "huascar.jpg",
+        "imageBN": "huascarbn.png",
+        "name": "Huáscar ",
+        "lastName": "Miranda M.",
+        "title": "CTO",
+        "x": "https://x.com/Huascarmm",
+        "linkedIn": "https://www.linkedin.com/in/huascarmiranda",
+        "small": "Expert in creation and management of blockchain projects",
+        "large": "With more than 6 years of experience in the technical creation and management of blockchain projects, he is in charge of creating and ensuring the technical quality and security of our application.",
+        "skills": [
+          { "subject": "Blockchain", "level": "90" },
+          { "subject": "Technical team management", "level": "70" }
+        ]
+      },
+
+      {
         "imageColor": "alejandro.png",
         "imageBN": "alejandrobn.png",
         "name": "Alejandro",
         "lastName": "Chirinos",
-        "title": "CEO",
+        "title": "CFO",
         "x": "https://x.com/mauro_chirinos",
         "linkedIn": "https://www.linkedin.com/in/mauro-alejandro-chirinos-chuquimia-21a2b12a2",
         "small": "Expert in public relations, blockchain education",
@@ -156,6 +157,39 @@
           { "subject": "Blockchain", "level": "90" },
           { "subject": "Team Management", "level": "70" },
           { "subject": "Public Relations", "level": "80" }
+        ]
+      },
+      {
+        "imageColor": "wara.gif",
+        "imageBN": "wara.gif",
+        "name": "Wara",
+        "lastName": "Lotito",
+        "title": "CMO",
+        "x": "https://x.com/waralotito",
+        "linkedIn": "https://www.linkedin.com/in/wara-lotito",
+        "small": "Marketing expert and web 3 community manager",
+        "large": "Warita is commercial engineer, she manage social communities of TU VOTO DECIDE, and marketing strategy",
+        "skills": [
+          { "subject": "Blockchain", "level": "70" },
+          { "subject": "Gestión equipos ", "level": "70" },
+          { "subject": "Relaciones públicas", "level": "90" }
+        ]
+      },
+      {
+        "imageColor": "daniel.jpg",
+        "imageBN": "daniel.jpg",
+        "name": "Daniel",
+        "lastName": "Mamani",
+        "title": "COO",
+        "x": "https://x.com/mauro_chirinos",
+        "linkedIn": "https://www.linkedin.com/in/mauro-alejandro-chirinos-chuquimia-21a2b12a2",
+        "small": "Expert in operations and logistics web 3",
+        "large": "Daniel is expert in events organization, public relationships, also connect with another communities",
+        "skills": [
+          { "subject": "Blockchain", "level": "80" },
+          { "subject": "Gestión equipos ", "level": "80" },
+          { "subject": "Relaciones públicas", "level": "90" },
+          { "subject": "Organización de Eventos", "level": "90" }
         ]
       }
     ]

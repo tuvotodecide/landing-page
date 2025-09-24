@@ -113,6 +113,21 @@
     "description": "La aplicación de control electoral es una iniciativa nacida desde Asoblockchain Bolivia, siendo el equipo presentado aquí los ejecutivos y principales encargados de la aplicación.",
     "members": [
       {
+        "imageColor": "cecilia.jpg",
+        "imageBN": "ceciliabn.png",
+        "name": "Cecilia ",
+        "lastName": "Contreras",
+        "title": "CEO ",
+        "x": "https://x.com/Ceci_Sakura007",
+        "linkedIn": "https://x.com/Ceci_Sakura007",
+        "small": "Experta en operaciones, relaciones institucionales tanto nacionales como internacionales",
+        "large": "Cecilia es experta Blockchain y trabaja en protocolos internacionales relacionados con blockchain, organiza operaciones logisticas de testo de la app.",
+        "skills": [
+          { "subject": "Blockchain", "level": "90" },
+          { "subject": "Relaciones públicas", "level": "60" }
+        ]
+      },
+      {
         "imageColor": "huascar.jpg",
         "imageBN": "huascarbn.png",
         "name": "Huáscar",
@@ -128,26 +143,11 @@
         ]
       },
       {
-        "imageColor": "cecilia.jpg",
-        "imageBN": "ceciliabn.png",
-        "name": "Cecilia ",
-        "lastName": "Contreras",
-        "title": "COO ",
-        "x": "https://x.com/Ceci_Sakura007",
-        "linkedIn": "https://x.com/Ceci_Sakura007",
-        "small": "Experta en operaciones, relaciones institucionales tanto nacionales como internacionales",
-        "large": "Cecilia es experta Blockchain y trabaja en protocolos internacionales relacionados con blockchain, organiza operaciones logisticas de testo de la app.",
-        "skills": [
-          { "subject": "Blockchain", "level": "90" },
-          { "subject": "Relaciones públicas", "level": "60" }
-        ]
-      },
-      {
         "imageColor": "alejandro.png",
         "imageBN": "alejandrobn.png",
         "name": "Alejandro",
         "lastName": "Chirinos",
-        "title": "CEO",
+        "title": "CFO",
         "x": "https://x.com/mauro_chirinos",
         "linkedIn": "https://www.linkedin.com/in/mauro-alejandro-chirinos-chuquimia-21a2b12a2",
         "small": "Experto en relaciones publicas, educación blockchain",
@@ -156,6 +156,39 @@
           { "subject": "Blockchain", "level": "90" },
           { "subject": "Gestión equipos ", "level": "70" },
           { "subject": "Relaciones públicas", "level": "80" }
+        ]
+      },
+      {
+        "imageColor": "wara.gif",
+        "imageBN": "wara.gif",
+        "name": "Wara",
+        "lastName": "Lotito",
+        "title": "CMO",
+        "x": "https://x.com/waralotito",
+        "linkedIn": "https://www.linkedin.com/in/wara-lotito",
+        "small": "Experto en marketing y administrador de comunidades web 3",
+        "large": "Warita es ingeniera comercial, encargada de las redes sociales y la estrategia general de marketing de la empresa",
+        "skills": [
+          { "subject": "Blockchain", "level": "70" },
+          { "subject": "Gestión equipos ", "level": "70" },
+          { "subject": "Relaciones públicas", "level": "90" }
+        ]
+      },
+      {
+        "imageColor": "daniel.jpg",
+        "imageBN": "daniel.jpg",
+        "name": "Daniel",
+        "lastName": "Mamani",
+        "title": "COO",
+        "x": "https://x.com/mauro_chirinos",
+        "linkedIn": "https://www.linkedin.com/in/mauro-alejandro-chirinos-chuquimia-21a2b12a2",
+        "small": "Experto en relaciones publicas, eventos y educación blockchain",
+        "large": "Daniel es experto organizador de eventos de educación web 3, relaciones públicas y demás para la aplicación",
+        "skills": [
+          { "subject": "Blockchain", "level": "80" },
+          { "subject": "Gestión equipos ", "level": "80" },
+          { "subject": "Relaciones públicas", "level": "90" },
+          { "subject": "Organización de Eventos", "level": "90" }
         ]
       }
     ]
